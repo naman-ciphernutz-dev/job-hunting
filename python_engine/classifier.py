@@ -316,18 +316,18 @@ def process_inbox(emails: List[Dict[str, Any]], ref_date: Optional[date] = None)
             summary["scams_detected"] += 1
             scam_alerts.append(item)
 
-        if item["followup"]["needs_followup"]:
-            summary["followups_pending"] += 1
-            followup_list.append(item)
-
     from .application_tracker import group_emails_into_applications
     app_data = group_emails_into_applications(classified_items, ref_date)
+
+    # Application-level follow-ups (Gap A & C: Follow-ups belong to applications, not stale emails)
+    app_followups = [a for a in app_data["applications"] if a["needs_followup"]]
+    summary["followups_pending"] = len(app_followups)
 
     return {
         "summary": summary,
         "items": classified_items,
         "stage_buckets": stage_buckets,
         "scam_alerts": scam_alerts,
-        "followup_reminders": followup_list,
+        "followup_reminders": app_followups,
         "application_tracker": app_data
     }

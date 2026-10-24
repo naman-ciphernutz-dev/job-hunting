@@ -143,14 +143,14 @@ def run_cli():
     # 3. 7-Day Follow-up Reminders Section
     if results["followup_reminders"] and args.filter in ["all", "followup"]:
         print(f"{BG_YELLOW}{WHITE}{BOLD} 🔔 ACTION REQUIRED: 7+ DAYS NO REPLY - FOLLOW-UP QUEUE ({len(results['followup_reminders'])}) {RESET}")
-        for item in results["followup_reminders"]:
-            fo = item["followup"]
-            print(f"\n  • {BOLD}ID #{item['id']} - {fo['company']}{RESET} (Applied: {item['date']} → {YELLOW}{BOLD}{fo['days_silent']} days silent{RESET})")
-            print(f"    Subject: {item['subject']}")
+        for app in results["followup_reminders"]:
+            print(f"\n  • {BOLD}{app['app_id']} - {app['company']}{RESET} ({app['role']} | Last event: {app['last_event_date']} → {YELLOW}{BOLD}{app['days_silent']} days silent{RESET})")
+            print(f"    Current Stage: {format_category(app['current_stage'])}")
             print(f"    {CYAN}⚡ Auto-Generated Outreach Draft:{RESET}")
-            for line in fo["followup_draft"].split("\n")[:4]:
-                print(f"      {line}")
-            print(f"      {WHITE}... [Full draft available in export/dashboard]{RESET}")
+            if app.get("followup_draft"):
+                for line in app["followup_draft"].split("\n")[:4]:
+                    print(f"      {line}")
+                print(f"      {WHITE}... [Full draft available in export/dashboard]{RESET}")
         print()
 
     # 4. Aggregated Application Records Table (Gap A: Grouping emails into persistent applications)
