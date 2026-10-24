@@ -1,0 +1,5 @@
+# Job Hunt Autopilot
+# Core system uses Python standard library (zero external dependencies required for base runner)
+# Optional enhancements for CLI formatting and testing:
+pytest>=7.0.0
+rich>=13.0.0

@@ -1,0 +1,19 @@
+{
+  "name": "job-hunt-autopilot",
+  "version": "1.0.0",
+  "description": "Track every application. Catch every fake offer. GDG Hackathon Layoff Recovery Tracker.",
+  "scripts": {
+    "start": "node -e \"const http=require('http'), fs=require('fs'), path=require('path'); http.createServer((req,res)=>{ let fp = path.join(__dirname, req.url === '/' ? 'index.html' : req.url); fs.readFile(fp, (err,data)=>{ if(err){res.writeHead(404);res.end('Not Found');}else{ res.writeHead(200); res.end(data);} }); }).listen(8080, ()=>console.log('Dashboard running at http://localhost:8080'));\"",
+    "test": "py -m unittest discover -s tests -p \"test_*.py\"",
+    "cli": "py python_engine/cli.py --input data/sample_inbox.json",
+    "server": "py python_engine/server.py"
+  },
+  "keywords": [
+    "job-hunt",
+    "scam-detection",
+    "layoff-recovery",
+    "gdg-hackathon"
+  ],
+  "author": "GDG Hackathon Team",
+  "license": "MIT"
+}
