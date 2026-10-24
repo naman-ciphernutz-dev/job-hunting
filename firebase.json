@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -10,6 +10,13 @@
       "scripts/**"
     ],
     "rewrites": [
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "job-hunt-autopilot-api",
+          "region": "asia-south1"
+        }
+      },
       {
         "source": "**",
         "destination": "/index.html"

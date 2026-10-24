@@ -1,8 +1,12 @@
+import os
 import urllib.request
 import json
 import ssl
 
-API_KEY = "AQ.Ab8RN6LaVDwfHZmL1kIKbc4LbGteGqzhh6UUZX9t_o2RWrI9LA"
+API_KEY = os.environ.get("GEMINI_API_KEY", "")
+if not API_KEY:
+    print("Please set GEMINI_API_KEY environment variable before running.")
+    exit(1)
 headers = {
     "Content-Type": "application/json",
     "X-goog-api-key": API_KEY

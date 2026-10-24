@@ -26,15 +26,18 @@ if sys.stdout.encoding != 'utf-8':
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, PROJECT_ROOT)
 
+PUBLIC_DIR = os.path.join(PROJECT_ROOT, "public")
+STATIC_DIR = PUBLIC_DIR if os.path.isdir(PUBLIC_DIR) else PROJECT_ROOT
+
 from python_engine.ingestion import load_inbox
 from python_engine.classifier import process_inbox, DEFAULT_REFERENCE_DATE
 
-PORT = 8080
+PORT = int(os.environ.get("PORT", "8080"))
 
 
 class AutopilotHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=PROJECT_ROOT, **kwargs)
+        super().__init__(*args, directory=STATIC_DIR, **kwargs)
 
     def do_GET(self):
         parsed = urlparse(self.path)

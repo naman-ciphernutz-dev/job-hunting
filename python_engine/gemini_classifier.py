@@ -17,7 +17,7 @@ from datetime import date
 from .classifier import classify_email as rule_based_classify
 from .followup import DEFAULT_REFERENCE_DATE
 
-DEFAULT_API_KEY = os.environ.get("GEMINI_API_KEY", "AQ.Ab8RN6LaVDwfHZmL1kIKbc4LbGteGqzhh6UUZX9t_o2RWrI9LA")
+DEFAULT_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 DEFAULT_MODEL = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
 
 
@@ -28,6 +28,11 @@ def classify_with_gemini(email_item: Dict[str, Any], api_key: Optional[str] = No
     to the calibrated forensic engine.
     """
     key = api_key or DEFAULT_API_KEY
+    if not key:
+        # If no API key configured, use local forensic engine directly
+        res = rule_based_classify(email_item, ref_date)
+        res["powered_by"] = "Google Heuristic Engine (Local)"
+        return res
     active_model = model or DEFAULT_MODEL
 
     # Prompt constructing strict classification and evidence extraction

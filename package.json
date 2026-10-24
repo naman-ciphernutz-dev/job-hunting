@@ -6,7 +6,8 @@
     "start": "node -e \"const http=require('http'), fs=require('fs'), path=require('path'); http.createServer((req,res)=>{ let fp = path.join(__dirname, req.url === '/' ? 'index.html' : req.url); fs.readFile(fp, (err,data)=>{ if(err){res.writeHead(404);res.end('Not Found');}else{ res.writeHead(200); res.end(data);} }); }).listen(8080, ()=>console.log('Dashboard running at http://localhost:8080'));\"",
     "test": "py -m unittest discover -s tests -p \"test_*.py\"",
     "cli": "py python_engine/cli.py --input data/sample_inbox.json",
-    "server": "py python_engine/server.py"
+    "server": "py python_engine/server.py",
+    "sync-public": "powershell -Command \"Copy-Item index.html, styles.css, app.js public/ -Force\""
   },
   "keywords": [
     "job-hunt",
