@@ -320,10 +320,14 @@ def process_inbox(emails: List[Dict[str, Any]], ref_date: Optional[date] = None)
             summary["followups_pending"] += 1
             followup_list.append(item)
 
+    from .application_tracker import group_emails_into_applications
+    app_data = group_emails_into_applications(classified_items, ref_date)
+
     return {
         "summary": summary,
         "items": classified_items,
         "stage_buckets": stage_buckets,
         "scam_alerts": scam_alerts,
-        "followup_reminders": followup_list
+        "followup_reminders": followup_list,
+        "application_tracker": app_data
     }

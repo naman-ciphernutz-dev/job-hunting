@@ -153,9 +153,26 @@ def run_cli():
             print(f"      {WHITE}... [Full draft available in export/dashboard]{RESET}")
         print()
 
-    # 4. Applications Tracker Table
+    # 4. Aggregated Application Records Table (Gap A: Grouping emails into persistent applications)
+    app_tracker = results.get("application_tracker", {})
+    apps = app_tracker.get("applications", [])
+    if apps and args.filter in ["all", "applied", "interview", "rejected", "offer"]:
+        print(f"{BOLD}━━━━━━━━━━━━━━━━━━━ UNIFIED APPLICATION RECORDS (GROUPED) ━━━━━━━━━━━━━━━━━━━{RESET}")
+        print(f"{'App ID':<8} | {'Company':<16} | {'Current Stage':<25} | {'Role':<26} | {'Timeline Events'}")
+        print("─" * 105)
+        for app in apps:
+            if args.filter != "all" and app["current_stage"] != args.filter:
+                continue
+            stage_disp = format_category(app["current_stage"])
+            events_summary = f"{len(app['emails'])} emails (" + " → ".join([e['category'][:3].upper() for e in app['emails']]) + f", last {app['last_event_date']})"
+            if app["needs_followup"]:
+                events_summary += f" {YELLOW}{BOLD}⚠️ {app['days_silent']}d silent{RESET}"
+            print(f"{app['app_id']:<8} | {app['company']:<16} | {stage_disp:<34} | {app['role'][:25]:<26} | {events_summary}")
+        print()
+
+    # 5. Raw Email Stream Tracker Table
     if args.filter in ["all", "applied", "interview", "rejected", "offer"]:
-        print(f"{BOLD}━━━━━━━━━━━━━━━━━━━━━━ ALL APPLICATIONS TRACKER ━━━━━━━━━━━━━━━━━━━━━━{RESET}")
+        print(f"{BOLD}━━━━━━━━━━━━━━━━━━━━━━━━ RAW EMAIL INGESTION STREAM ━━━━━━━━━━━━━━━━━━━━━━━━{RESET}")
         print(f"{'ID':<4} | {'Date':<10} | {'Status':<25} | {'Company / Sender':<28} | {'Subject'}")
         print("─" * 105)
         for item in results["items"]:

@@ -50,93 +50,93 @@
   },
   {
     "id": 8,
+    "date": "2026-10-14",
+    "from": "recruiting@razorpay.com",
+    "subject": "Application received: Senior Backend Engineer at Razorpay",
+    "body": "Hi Rahul, We received your application for Senior Backend Engineer at Razorpay. Our recruitment team has begun reviewing your credentials and will reach out with technical assessment details."
+  },
+  {
+    "id": 9,
     "date": "2026-10-21",
     "from": "recruiting@razorpay.com",
     "subject": "Razorpay Tech Round 2: System Architecture Discussion",
     "body": "Hi Rahul, Great job on the live coding round! We are excited to advance you to Round 2 with our Principal Architect. The session will focus on distributed caching and concurrency. Please confirm if 26th October at 3:00 PM IST works for you."
   },
   {
-    "id": 9,
+    "id": 10,
+    "date": "2026-10-09",
+    "from": "careers@atlassian.com",
+    "subject": "Thanks for applying to Atlassian (Senior Fullstack / Backend Engineer)",
+    "body": "Hi Rahul, Thank you for your application to Atlassian. Our engineering talent team is reviewing your profile."
+  },
+  {
+    "id": 11,
     "date": "2026-10-17",
     "from": "careers@atlassian.com",
-    "subject": "Your application to Atlassian",
+    "subject": "Update on your application to Atlassian",
     "body": "Dear Rahul, Thank you for taking the time to interview with Atlassian for the Senior Fullstack / Backend Engineer vacancy. After careful evaluation, we have chosen not to proceed with your candidacy at this time. We will keep your profile in our talent pool for future opportunities."
   },
   {
-    "id": 10,
+    "id": 12,
     "date": "2026-10-16",
     "from": "amazon.global.work@gmail.com",
     "subject": "Urgent Part-time / Remote Software Job - Rs 5000 Daily",
     "body": "Greetings! Selected directly for Amazon Global Partner Remote Operations. Earn Rs 3,000 to Rs 8,000 daily from home. No interview needed. Join our Telegram channel @AmazonRecruitIndia and pay Rs 1,499 one-time registration and verification fee. Limited slots available."
   },
   {
-    "id": 11,
+    "id": 13,
     "date": "2026-10-22",
     "from": "hiring@zepto.in",
     "subject": "Thanks for applying to Zepto (Quick Commerce Backend)",
     "body": "Hi Rahul, Thanks for applying for Senior Backend Engineer at Zepto. Our recruitment team has received your details and GitHub profile. We will reach out shortly regarding next steps."
   },
   {
-    "id": 12,
+    "id": 14,
+    "date": "2026-10-12",
+    "from": "hr@hasura.io",
+    "subject": "Hasura: Technical screening completed",
+    "body": "Hi Rahul, Thanks for completing the system architecture interview with our Engine team. The feedback was very positive. We are preparing offer documents."
+  },
+  {
+    "id": 15,
     "date": "2026-10-22",
     "from": "hr@hasura.io",
     "subject": "Official Offer Letter: Senior Software Engineer at Hasura",
     "body": "Dear Rahul, On behalf of Hasura Inc., we are thrilled to formally offer you the position of Senior Software Engineer on our Engine Team. Attached is your comprehensive offer letter outlining your compensation (INR 28,00,000 base + stock options), health benefits, and proposed joining date of 16th November 2026. Please sign and return the letter within 5 business days."
   },
   {
-    "id": 13,
+    "id": 16,
     "date": "2026-10-20",
     "from": "talent@flipkart.com",
     "subject": "Status update on your application at Flipkart",
     "body": "Hello Rahul, Thank you for your interest in joining Flipkart. Due to internal restructuring and headcount allocation adjustments, this specific role has been placed on hold. We will retain your resume for future openings."
   },
   {
-    "id": 14,
+    "id": 17,
     "date": "2026-10-23",
     "from": "talent@postman.com",
     "subject": "Invitation to Interview: Postman Platform Team",
     "body": "Hi Rahul, We reviewed your background and would love to schedule a 30-minute technical screening call with our Engineering Manager. Please click the link below to select a time that suits your schedule: https://postman.hire.com/interview/rahul-verma"
   },
   {
-    "id": 15,
+    "id": 18,
     "date": "2026-10-19",
     "from": "tcs.immediate.selection@outlook.com",
     "subject": "Urgent: Direct Selection in Tata Consultancy Services (TCS)",
     "body": "Dear candidate, Aapka direct selection ho gaya hai TCS Bangalore me software engineer post ke liye. Package 8.5 LPA. Technical interview round waived off. Joining process confirm karne ke liye Rs 2,999 verification charges UPI karein. Send Aadhaar card, PAN card and photo on WhatsApp +91-9123456789. Yeh fee pehli salary me 100% refund hogi."
   },
   {
-    "id": 16,
+    "id": 19,
     "date": "2026-10-08",
     "from": "careers@swiggy.in",
     "subject": "Application Acknowledgment - SDE 2 (Delivery Platform)",
     "body": "Hi Rahul, Thank you for applying to Swiggy. We have received your application for SDE 2 - Delivery Platform. We appreciate your interest and our team is evaluating all profiles against our open requirements."
   },
   {
-    "id": 17,
-    "date": "2026-10-13",
-    "from": "people@browserstack.com",
-    "subject": "BrowserStack Application Received",
-    "body": "Hi Rahul, Thank you for submitting your application for the Senior Systems Engineer position at BrowserStack. We will review your qualifications and contact you if there is a match."
-  },
-  {
-    "id": 18,
+    "id": 20,
     "date": "2026-10-24",
     "from": "people@cred.club",
     "subject": "Formal Offer of Employment: Backend Platform Engineer at CRED",
     "body": "Hi Rahul, We were thoroughly impressed with your problem solving and architecture discussions across all interview rounds. We are delighted to extend a formal offer of employment for the Backend Platform Engineer position at CRED. Please review the attached offer package detailing base pay, CRED ESOPs, and benefits."
-  },
-  {
-    "id": 19,
-    "date": "2026-10-16",
-    "from": "no-reply@uber.com",
-    "subject": "Your application to Uber",
-    "body": "Thank you for your interest in Uber and for taking the time to submit your application. At this time, we have decided not to advance your candidacy for this role. We encourage you to check our careers page for other suitable positions in the future."
-  },
-  {
-    "id": 20,
-    "date": "2026-10-24",
-    "from": "recruiting@urbancompany.com",
-    "subject": "Invitation to Code Pair: Urban Company",
-    "body": "Hi Rahul, We would like to invite you to a 60-minute virtual pair-programming round with our core infrastructure team. Please choose your availability for early next week using the link enclosed."
   }
 ]

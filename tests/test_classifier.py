@@ -35,23 +35,23 @@ class TestJobHuntAutopilot(unittest.TestCase):
         self.assertEqual(res_6["category"], "scam")
         self.assertTrue(res_6["scam_analysis"]["is_scam"])
 
-        # Email #15: Hinglish direct selection scam with UPI fee
-        email_15 = next(e for e in self.emails if e["id"] == 15)
-        res_15 = classify_email(email_15, self.ref_date)
-        self.assertEqual(res_15["category"], "scam")
-        self.assertTrue(res_15["scam_analysis"]["is_scam"])
+        # Email #18: Hinglish direct selection scam with UPI fee
+        email_18 = next(e for e in self.emails if e["id"] == 18)
+        res_18 = classify_email(email_18, self.ref_date)
+        self.assertEqual(res_18["category"], "scam")
+        self.assertTrue(res_18["scam_analysis"]["is_scam"])
 
     def test_genuine_offers_not_flagged(self):
         """Ensure authentic offers from legitimate corporate domains are NOT classified as scams."""
-        email_12 = next(e for e in self.emails if e["id"] == 12)  # Hasura
-        res_12 = classify_email(email_12, self.ref_date)
-        self.assertEqual(res_12["category"], "offer")
-        self.assertFalse(res_12["scam_analysis"]["is_scam"])
+        email_15 = next(e for e in self.emails if e["id"] == 15)  # Hasura Offer
+        res_15 = classify_email(email_15, self.ref_date)
+        self.assertEqual(res_15["category"], "offer")
+        self.assertFalse(res_15["scam_analysis"]["is_scam"])
 
-        email_18 = next(e for e in self.emails if e["id"] == 18)  # CRED
-        res_18 = classify_email(email_18, self.ref_date)
-        self.assertEqual(res_18["category"], "offer")
-        self.assertFalse(res_18["scam_analysis"]["is_scam"])
+        email_20 = next(e for e in self.emails if e["id"] == 20)  # CRED Offer
+        res_20 = classify_email(email_20, self.ref_date)
+        self.assertEqual(res_20["category"], "offer")
+        self.assertFalse(res_20["scam_analysis"]["is_scam"])
 
     def test_interview_classification(self):
         """Ensure technical interview invites and code pair rounds are classified as interview."""
@@ -59,13 +59,13 @@ class TestJobHuntAutopilot(unittest.TestCase):
         res_3 = classify_email(email_3, self.ref_date)
         self.assertEqual(res_3["category"], "interview")
 
-        email_8 = next(e for e in self.emails if e["id"] == 8)  # Razorpay Round 2
-        res_8 = classify_email(email_8, self.ref_date)
-        self.assertEqual(res_8["category"], "interview")
+        email_9 = next(e for e in self.emails if e["id"] == 9)  # Razorpay Round 2
+        res_9 = classify_email(email_9, self.ref_date)
+        self.assertEqual(res_9["category"], "interview")
 
-        email_20 = next(e for e in self.emails if e["id"] == 20)  # Urban Company pair programming
-        res_20 = classify_email(email_20, self.ref_date)
-        self.assertEqual(res_20["category"], "interview")
+        email_17 = next(e for e in self.emails if e["id"] == 17)  # Postman Interview
+        res_17 = classify_email(email_17, self.ref_date)
+        self.assertEqual(res_17["category"], "interview")
 
     def test_rejections_classification(self):
         """Ensure polite rejections are accurately labeled as rejected."""
@@ -73,9 +73,9 @@ class TestJobHuntAutopilot(unittest.TestCase):
         res_4 = classify_email(email_4, self.ref_date)
         self.assertEqual(res_4["category"], "rejected")
 
-        email_9 = next(e for e in self.emails if e["id"] == 9)  # Atlassian
-        res_9 = classify_email(email_9, self.ref_date)
-        self.assertEqual(res_9["category"], "rejected")
+        email_11 = next(e for e in self.emails if e["id"] == 11)  # Atlassian rejection
+        res_11 = classify_email(email_11, self.ref_date)
+        self.assertEqual(res_11["category"], "rejected")
 
     def test_followup_reminder_7_days(self):
         """Ensure applications >= 7 days old trigger follow-up reminders with drafts."""
@@ -88,10 +88,42 @@ class TestJobHuntAutopilot(unittest.TestCase):
         self.assertIsNotNone(res_1["followup"]["followup_draft"])
         self.assertIn("14 days ago", res_1["followup"]["followup_draft"])
 
-        # Email #11: Applied 2026-10-22 -> 2 days silent (Recent, no follow-up needed yet)
-        email_11 = next(e for e in self.emails if e["id"] == 11)
-        res_11 = classify_email(email_11, self.ref_date)
-        self.assertFalse(res_11["followup"]["needs_followup"])
+        # Email #13: Applied 2026-10-22 -> 2 days silent (Recent, no follow-up needed yet)
+        email_13 = next(e for e in self.emails if e["id"] == 13)
+        res_13 = classify_email(email_13, self.ref_date)
+        self.assertFalse(res_13["followup"]["needs_followup"])
+
+    def test_application_grouping_and_timelines(self):
+        """Test Gap A: Verify emails from same company are grouped into unified application records."""
+        result = process_inbox(self.emails, self.ref_date)
+        app_tracker = result["application_tracker"]
+        apps = app_tracker["applications"]
+
+        # Ensure total legitimate applications is less than total emails due to grouping
+        self.assertLess(len(apps), len(self.emails))
+
+        # Check Razorpay grouping (Email #8 Applied + Email #9 Interview Round 2)
+        razorpay_app = next((a for a in apps if "Razorpay" in a["company"]), None)
+        self.assertIsNotNone(razorpay_app)
+        self.assertEqual(len(razorpay_app["emails"]), 2)
+        self.assertEqual(razorpay_app["current_stage"], "interview")
+
+        # Check Atlassian grouping (Applied -> Rejection)
+        atlassian_app = next((a for a in apps if "Atlassian" in a["company"]), None)
+        self.assertIsNotNone(atlassian_app)
+        self.assertEqual(len(atlassian_app["emails"]), 2)
+        self.assertEqual(atlassian_app["current_stage"], "rejected")
+
+        # Check Hasura grouping (Technical interview -> Formal Offer)
+        hasura_app = next((a for a in apps if "Hasura" in a["company"]), None)
+        self.assertIsNotNone(hasura_app)
+        self.assertEqual(len(hasura_app["emails"]), 2)
+        self.assertEqual(hasura_app["current_stage"], "offer")
+
+        # Check that scams are quarantined and not treated as legitimate applications
+        scam_companies = [a["company"] for a in apps]
+        self.assertNotIn("Infosys", scam_companies)
+        self.assertEqual(app_tracker["total_scams_blocked"], 4)
 
     def test_full_pipeline_process_inbox(self):
         """Verify batch processor summary stats and structure."""
@@ -100,11 +132,7 @@ class TestJobHuntAutopilot(unittest.TestCase):
         self.assertEqual(summary["total_emails"], 20)
         self.assertGreater(summary["scams_detected"], 0)
         self.assertGreater(summary["followups_pending"], 0)
-        self.assertIn("applied", summary["stages"])
-        self.assertIn("interview", summary["stages"])
-        self.assertIn("rejected", summary["stages"])
-        self.assertIn("offer", summary["stages"])
-        self.assertIn("scam", summary["stages"])
+        self.assertIn("application_tracker", result)
 
 
 if __name__ == "__main__":

@@ -161,18 +161,36 @@
     <!-- Application Tracker Table & Filters -->
     <section class="tracker-section" id="tracker-section">
       <div class="tracker-toolbar">
-        <div class="filter-pills" id="filter-pills">
-          <button class="filter-btn active" data-filter="all" id="filter-all">All Items (<span id="cnt-all">0</span>)</button>
-          <button class="filter-btn filter-scam-btn" data-filter="scam" id="filter-scam">🚨 Fake Offers (<span id="cnt-scam">0</span>)</button>
-          <button class="filter-btn filter-followup-btn" data-filter="followup" id="filter-followup">🔔 Needs Follow-Up (<span id="cnt-followup">0</span>)</button>
-          <button class="filter-btn" data-filter="offer" id="filter-offer">🎉 Offers (<span id="cnt-offer">0</span>)</button>
-          <button class="filter-btn" data-filter="interview" id="filter-interview">📅 Interviews (<span id="cnt-interview">0</span>)</button>
-          <button class="filter-btn" data-filter="applied" id="filter-applied">⏳ Applied (<span id="cnt-applied">0</span>)</button>
-          <button class="filter-btn" data-filter="rejected" id="filter-rejected">❌ Rejected (<span id="cnt-rejected">0</span>)</button>
+        <div class="toolbar-left-group">
+          <!-- View Switcher (Gap A: Application Tracker vs Email Stream) -->
+          <div class="view-mode-toggle" id="view-mode-toggle">
+            <button class="view-btn active" id="btn-view-apps" data-view="apps">
+              🏢 Applications View (<span id="cnt-apps-total">13</span>)
+            </button>
+            <button class="view-btn" id="btn-view-emails" data-view="emails">
+              📨 Raw Email Stream (<span id="cnt-emails-total">20</span>)
+            </button>
+          </div>
+
+          <div class="filter-pills" id="filter-pills">
+            <button class="filter-btn active" data-filter="all" id="filter-all">All (<span id="cnt-all">13</span>)</button>
+            <button class="filter-btn filter-scam-btn" data-filter="scam" id="filter-scam">🚨 Fake Offers (<span id="cnt-scam">4</span>)</button>
+            <button class="filter-btn filter-followup-btn" data-filter="followup" id="filter-followup">🔔 Overdue Follow-Up (<span id="cnt-followup">4</span>)</button>
+            <button class="filter-btn" data-filter="offer" id="filter-offer">🎉 Offers (<span id="cnt-offer">2</span>)</button>
+            <button class="filter-btn" data-filter="interview" id="filter-interview">📅 Interviews (<span id="cnt-interview">3</span>)</button>
+            <button class="filter-btn" data-filter="applied" id="filter-applied">⏳ Applied (<span id="cnt-applied">5</span>)</button>
+            <button class="filter-btn" data-filter="rejected" id="filter-rejected">❌ Rejected (<span id="cnt-rejected">3</span>)</button>
+          </div>
         </div>
 
-        <div class="search-box">
-          <input type="text" id="search-input" placeholder="Search company, role, sender...">
+        <div class="toolbar-right-group">
+          <select id="model-selector" class="model-select" title="Configurable Gemini Model Selection">
+            <option value="gemini-2.5-flash" selected>Model: Gemini 2.5 Flash (Fast & Low Cost)</option>
+            <option value="gemini-4-argon">Model: Gemini 4 Argon (Frontier)</option>
+          </select>
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search company, role...">
+          </div>
         </div>
       </div>
 

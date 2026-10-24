@@ -21,22 +21,30 @@ def parse_date_safely(date_val: Any) -> date:
     return DEFAULT_REFERENCE_DATE
 
 
-def extract_company_name(email_sender: str, subject: str) -> str:
-    """Heuristic extraction of company name from email sender domain or subject."""
-    # Check common company patterns in subject
-    for keyword in ["at ", "to ", ": "]:
-        if keyword in subject:
-            parts = subject.split(keyword)
-            candidate = parts[-1].split("-")[0].split("(")[0].strip()
-            if len(candidate) > 2 and len(candidate) < 25:
-                return candidate
+FREE_DOMAINS = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "rediffmail.com", "yopmail.com"]
 
-    # Fallback to domain
+
+def extract_company_name(email_sender: str, subject: str) -> str:
+    """Accurate company name extraction from email sender domain or subject."""
+    # 1. If corporate domain, domain is the company
     if "@" in email_sender:
         domain = email_sender.split("@")[-1].lower()
-        parts = domain.split(".")
-        if len(parts) >= 2:
-            return parts[0].capitalize()
+        if not any(free in domain for free in FREE_DOMAINS):
+            parts = domain.split(".")
+            if len(parts) >= 2:
+                company_token = parts[0]
+                # Capitalize nicely (e.g. 'razorpay' -> 'Razorpay', 'cred' -> 'CRED')
+                if company_token == "cred":
+                    return "CRED"
+                return company_token.capitalize()
+
+    # 2. For free webmail or generic domains, look for brand or company pattern in subject
+    for keyword in ["at ", "to ", "in "]:
+        if keyword in subject.lower():
+            idx = subject.lower().find(keyword) + len(keyword)
+            candidate = subject[idx:].split("-")[0].split("(")[0].split(":")[0].strip()
+            if len(candidate) > 1 and len(candidate) < 30:
+                return candidate.strip()
 
     return "the Hiring Team"
 
