@@ -4,278 +4,341 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Job Hunt Autopilot: Post-layoff application tracking and fake offer scam forensics. Track 100+ applications, flag fake offers in red, and automate 7-day follow-ups.">
-  <title>Job Hunt Autopilot - Track Every Application. Catch Every Fake Offer.</title>
+  <title>Job Hunt Autopilot — Layoff Recovery Cockpit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="light-theme">
-  <!-- Top Navigation Bar -->
-  <header class="app-header">
-    <div class="header-container">
-      <div class="brand-group">
+  <!-- Top Command Bar -->
+  <header class="app-topbar">
+    <div class="topbar-left">
+      <div class="brand-pill">
         <div class="brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
             <circle cx="12" cy="12" r="10" stroke-width="1.5" stroke-dasharray="3 3"/>
           </svg>
         </div>
-        <div>
-          <div class="brand-title-row">
-            <h1 class="brand-title">Job Hunt Autopilot</h1>
-            <span class="badge badge-gdg">GDG Hackathon</span>
-          </div>
-          <p class="brand-subtitle">Track every application. Catch every fake offer.</p>
+        <div class="brand-text">
+          <span class="brand-title">Job Hunt Autopilot</span>
+          <span class="badge-sub">Layoff Cockpit</span>
         </div>
       </div>
-      
-      <div class="header-actions">
-        <button id="btn-load-sample" class="btn btn-primary" title="Load sample 20 emails">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          <span>Load 20 Demo Emails</span>
-        </button>
-
-        <label for="file-upload" class="btn btn-secondary" title="Upload inbox JSON or .mbox file">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 16l4-4 4 4"/></svg>
-          <span>Upload File</span>
-        </label>
-        <input type="file" id="file-upload" accept=".json,.mbox" style="display: none;">
-
-        <button id="btn-export-json" class="btn btn-ghost" title="Export Tracker Data">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-          <span>Export</span>
-        </button>
-
-        <button id="theme-toggle" class="btn btn-icon" title="Switch Theme">
-          🌙 Dark Mode
-        </button>
+      <div class="model-badge" title="Underlying AI Classifier Engine">
+        <span class="model-dot"></span>
+        <select id="model-selector" class="model-select-inline" title="Configurable Model Selection">
+          <option value="gemini-flash-latest" selected>Google Gemini 2.5 Flash</option>
+          <option value="gemini-4-argon">Google Gemini 4 Argon (Frontier)</option>
+        </select>
       </div>
+    </div>
+
+    <div class="topbar-right">
+      <button id="btn-load-sample" class="btn btn-primary" title="Load sample 20 emails">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        <span>⚡ Ingest Demo Inbox (20)</span>
+      </button>
+
+      <label for="file-upload" class="btn btn-secondary" title="Upload JSON or .mbox file">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 16l4-4 4 4"/></svg>
+        <span>Upload .mbox / JSON</span>
+      </label>
+      <input type="file" id="file-upload" accept=".json,.mbox" style="display: none;">
+
+      <button id="btn-export-json" class="btn btn-ghost" title="Export Tracker to JSON">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+        <span>Export</span>
+      </button>
+
+      <button id="theme-toggle" class="btn btn-icon" title="Toggle Light / Dark Mode">
+        🌙 Dark
+      </button>
     </div>
   </header>
 
-  <!-- Main Content Layout -->
-  <main class="main-container">
-    <!-- Streamlined Layoff Narrative Notice -->
-    <div class="compact-notice">
-      <div class="notice-left">
-        <span class="status-dot"></span>
-        <strong>Layoff Recovery Assistant:</strong>
-        <span>Unified inbox triage for 100+ applications. Aggregates multi-round communications, quarantines advance-fee scams, and flags 7-day silent follow-ups.</span>
-      </div>
-      <div class="notice-meta" id="anchor-date-display">
-        Anchor: 2026-10-24
-      </div>
-    </div>
+  <!-- App Shell Container -->
+  <div class="app-shell">
+    <!-- Left Navigation Dock -->
+    <aside class="sidebar-dock" id="sidebar-dock">
+      <div class="sidebar-section-title">WORKSPACES</div>
+      <nav class="dock-nav">
+        <button class="dock-btn active" id="nav-apps" data-view="apps">
+          <span class="dock-icon">🏢</span>
+          <span class="dock-label">Applications</span>
+          <span class="dock-counter" id="cnt-apps-total">13</span>
+        </button>
 
-    <!-- Interactive KPI Metrics Bar (Click to Filter) -->
-    <section class="metrics-grid" id="metrics-grid">
-      <div class="metric-card" id="metric-total" data-filter="all" title="Click to view all applications">
-        <div class="metric-header">
-          <span class="metric-label">Total Applications</span>
-          <span class="metric-icon">🏢</span>
-        </div>
-        <div class="metric-value" id="val-total">0</div>
-        <div class="metric-meta">Grouped by company & role</div>
-      </div>
+        <button class="dock-btn" id="nav-kanban" data-view="kanban">
+          <span class="dock-icon">📋</span>
+          <span class="dock-label">Kanban Board</span>
+          <span class="dock-counter" id="cnt-kanban-total">13</span>
+        </button>
 
-      <div class="metric-card metric-applied" id="metric-applied" data-filter="applied" title="Click to filter by Applied">
-        <div class="metric-header">
-          <span class="metric-label">Under Review</span>
-          <span class="metric-icon">⏳</span>
-        </div>
-        <div class="metric-value" id="val-applied">0</div>
-        <div class="metric-meta">Awaiting review</div>
-      </div>
+        <button class="dock-btn dock-btn-danger" id="nav-scams" data-view="scams">
+          <span class="dock-icon">🚨</span>
+          <span class="dock-label">Scam Defense</span>
+          <span class="dock-counter dock-counter-red" id="cnt-scam">4</span>
+        </button>
 
-      <div class="metric-card metric-interview" id="metric-interview" data-filter="interview" title="Click to filter by Interviews">
-        <div class="metric-header">
-          <span class="metric-label">Interview Stages</span>
-          <span class="metric-icon">📅</span>
-        </div>
-        <div class="metric-value" id="val-interview">0</div>
-        <div class="metric-meta">Active rounds</div>
-      </div>
+        <button class="dock-btn dock-btn-warning" id="nav-followups" data-view="followups">
+          <span class="dock-icon">🔔</span>
+          <span class="dock-label">Follow-Up Copilot</span>
+          <span class="dock-counter dock-counter-amber" id="cnt-followup">4</span>
+        </button>
 
-      <div class="metric-card metric-offer" id="metric-offer" data-filter="offer" title="Click to filter by Genuine Offers">
-        <div class="metric-header">
-          <span class="metric-label">Verified Offers</span>
-          <span class="metric-icon">🎉</span>
-        </div>
-        <div class="metric-value" id="val-offer">0</div>
-        <div class="metric-meta">Genuine company domains</div>
-      </div>
+        <button class="dock-btn" id="nav-raw" data-view="raw">
+          <span class="dock-icon">📨</span>
+          <span class="dock-label">Raw Inbox Feed</span>
+          <span class="dock-counter" id="cnt-emails-total">20</span>
+        </button>
+      </nav>
 
-      <div class="metric-card metric-scam" id="metric-scam" data-filter="scam" title="Click to inspect quarantined fake offers">
-        <div class="metric-header">
-          <span class="metric-label">Fake Offers Flagged</span>
-          <span class="metric-icon pulse-red">🚨</span>
-        </div>
-        <div class="metric-value" id="val-scam">0</div>
-        <div class="metric-meta text-red">Quarantined fraud & fees</div>
-      </div>
-
-      <div class="metric-card metric-followup" id="metric-followup" data-filter="followup" title="Click to view 7-day follow-ups">
-        <div class="metric-header">
-          <span class="metric-label">Follow-ups Due</span>
-          <span class="metric-icon">🔔</span>
-        </div>
-        <div class="metric-value" id="val-followup">0</div>
-        <div class="metric-meta text-yellow">≥ 7 days silent (draft ready)</div>
-      </div>
-    </section>
-
-    <!-- Collapsible Priority Scam Quarantine Box -->
-    <section class="alert-section" id="scam-alerts-section" style="display: none;">
-      <div class="alert-banner-header">
-        <div class="alert-title-wrap">
-          <div class="alert-pulse-badge">CRITICAL FRAUD QUARANTINE</div>
-          <div>
-            <h3>High-Risk Fake Offers Isolated</h3>
-            <p class="alert-sub">Detected upfront training fee demands, fake domains, or KYC phishing.</p>
+      <!-- Sidebar Status & Context Card -->
+      <div class="sidebar-footer">
+        <div class="recovery-status-card">
+          <div class="status-indicator">
+            <span class="pulse-dot-green"></span>
+            <strong>Layoff Recovery Active</strong>
+          </div>
+          <p class="status-desc">Auto-grouping 100+ applications, catching training-fee scams, and flagging 7-day silent follow-ups.</p>
+          <div class="status-meta" id="anchor-date-display">
+            Anchor: 2026-10-24
           </div>
         </div>
-        <div class="alert-header-actions">
-          <span class="alert-count-pill" id="scam-count-pill">0 Fake Offers Blocked</span>
-          <button class="btn btn-sm btn-outline-danger" id="btn-toggle-scams">Hide Details</button>
-        </div>
       </div>
-      <div class="scam-cards-container" id="scam-cards-list">
-        <!-- Injected via app.js -->
-      </div>
-    </section>
+    </aside>
 
-    <!-- Collapsible Follow-up Queue Section -->
-    <section class="followup-section" id="followup-section" style="display: none;">
-      <div class="followup-header">
-        <div>
-          <div class="section-tag">STAGNANCY DETECTOR</div>
-          <h3>Follow-Up Queue (≥7 Days of Silence)</h3>
-          <p class="section-sub">These employers haven't responded in a week. Click below to copy personalized outreach drafts.</p>
+    <!-- Center Main Workspace Stage -->
+    <main class="main-workspace" id="main-workspace">
+      <!-- KPI Stat Bar -->
+      <section class="kpi-ribbon" id="metrics-grid">
+        <div class="kpi-chip" id="metric-total" data-filter="all" title="Click to view all applications">
+          <span class="kpi-num" id="val-total">0</span>
+          <span class="kpi-tag">Total Applications</span>
         </div>
-        <button class="btn btn-sm btn-ghost" id="btn-toggle-followups">Hide Details</button>
-      </div>
-      <div class="followup-grid" id="followup-cards-list">
-        <!-- Injected via app.js -->
-      </div>
-    </section>
+        <div class="kpi-chip kpi-applied" id="metric-applied" data-filter="applied" title="Click to filter by Applied">
+          <span class="kpi-num" id="val-applied">0</span>
+          <span class="kpi-tag">Under Review</span>
+        </div>
+        <div class="kpi-chip kpi-interview" id="metric-interview" data-filter="interview" title="Click to filter by Interviews">
+          <span class="kpi-num" id="val-interview">0</span>
+          <span class="kpi-tag">Interviews</span>
+        </div>
+        <div class="kpi-chip kpi-offer" id="metric-offer" data-filter="offer" title="Click to filter by Genuine Offers">
+          <span class="kpi-num" id="val-offer">0</span>
+          <span class="kpi-tag">Verified Offers</span>
+        </div>
+        <div class="kpi-chip kpi-scam" id="metric-scam" data-filter="scam" title="Click to view Quarantined Fake Offers">
+          <span class="kpi-num" id="val-scam">0</span>
+          <span class="kpi-tag">Fake Offers</span>
+        </div>
+        <div class="kpi-chip kpi-followup" id="metric-followup" data-filter="followup" title="Click to view Overdue Follow-ups">
+          <span class="kpi-num" id="val-followup">0</span>
+          <span class="kpi-tag">Follow-ups Due</span>
+        </div>
+      </section>
 
-    <!-- Main Application Tracker Section -->
-    <section class="tracker-section" id="tracker-section">
-      <!-- Clean Single-Row Toolbar -->
-      <div class="tracker-toolbar">
-        <div class="toolbar-left-group">
-          <!-- View Switcher -->
-          <div class="view-mode-toggle" id="view-mode-toggle">
-            <button class="view-btn active" id="btn-view-apps" data-view="apps">
-              🏢 Applications (<span id="cnt-apps-total">13</span>)
-            </button>
-            <button class="view-btn" id="btn-view-emails" data-view="emails">
-              📨 Raw Stream (<span id="cnt-emails-total">20</span>)
-            </button>
+      <!-- View Header & Controls Toolbar -->
+      <div class="workspace-toolbar">
+        <div class="toolbar-title-group">
+          <h2 class="workspace-title" id="workspace-title">Application Records</h2>
+          <span class="workspace-count" id="workspace-count">13 items</span>
+        </div>
+
+        <div class="toolbar-actions">
+          <!-- Filter Chips -->
+          <div class="filter-chips" id="filter-pills">
+            <button class="filter-pill active" data-filter="all" id="filter-all">All (<span id="cnt-all">13</span>)</button>
+            <button class="filter-pill" data-filter="applied" id="filter-applied">Applied (<span id="cnt-applied">5</span>)</button>
+            <button class="filter-pill" data-filter="interview" id="filter-interview">Interviews (<span id="cnt-interview">3</span>)</button>
+            <button class="filter-pill" data-filter="offer" id="filter-offer">Offers (<span id="cnt-offer">2</span>)</button>
+            <button class="filter-pill" data-filter="rejected" id="filter-rejected">Rejected (<span id="cnt-rejected">3</span>)</button>
+            <button class="filter-pill pill-danger" data-filter="scam" id="filter-scam">🚨 Scams (<span id="cnt-scam-pill">4</span>)</button>
+            <button class="filter-pill pill-warning" data-filter="followup" id="filter-followup">🔔 Overdue (<span id="cnt-followup-pill">4</span>)</button>
           </div>
 
-          <!-- Filter Pills -->
-          <div class="filter-pills" id="filter-pills">
-            <button class="filter-btn active" data-filter="all" id="filter-all">All (<span id="cnt-all">13</span>)</button>
-            <button class="filter-btn filter-scam-btn" data-filter="scam" id="filter-scam">🚨 Fake Offers (<span id="cnt-scam">4</span>)</button>
-            <button class="filter-btn filter-followup-btn" data-filter="followup" id="filter-followup">🔔 Overdue (<span id="cnt-followup">4</span>)</button>
-            <button class="filter-btn" data-filter="offer" id="filter-offer">🎉 Offers (<span id="cnt-offer">2</span>)</button>
-            <button class="filter-btn" data-filter="interview" id="filter-interview">📅 Interviews (<span id="cnt-interview">3</span>)</button>
-            <button class="filter-btn" data-filter="applied" id="filter-applied">⏳ Applied (<span id="cnt-applied">5</span>)</button>
-            <button class="filter-btn" data-filter="rejected" id="filter-rejected">❌ Rejected (<span id="cnt-rejected">3</span>)</button>
-          </div>
-        </div>
-
-        <div class="toolbar-right-group">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <!-- Search Input -->
+          <div class="search-input-wrap">
+            <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             <input type="text" id="search-input" placeholder="Search company, role...">
           </div>
-          <select id="model-selector" class="model-select" title="Gemini Model Engine">
-            <option value="gemini-flash-latest" selected>Gemini 2.5 Flash</option>
-            <option value="gemini-4-argon">Gemini 4 Argon</option>
-          </select>
+
+          <!-- Hidden compatibility elements to prevent JS errors -->
+          <div style="display: none;">
+            <button id="btn-view-apps"></button>
+            <button id="btn-view-emails"></button>
+            <span id="scam-count-pill"></span>
+          </div>
         </div>
       </div>
 
-      <!-- Applications Table -->
-      <div class="table-container">
-        <table class="applications-table" id="applications-table">
-          <thead>
-            <tr>
-              <th style="width: 50px;">#</th>
-              <th style="width: 110px;">Date</th>
-              <th style="width: 160px;">Stage</th>
-              <th style="width: 220px;">Company / Role</th>
-              <th>Communication Overview</th>
-              <th style="width: 150px; text-align: center;">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="table-body">
-            <tr>
-              <td colspan="6" class="empty-state">
-                <div class="empty-wrap">
-                  <div class="empty-icon">📂</div>
-                  <h4>No communications loaded</h4>
-                  <p>Click "Load 20 Demo Emails" above to populate the tracker.</p>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
-
-  <!-- Detailed Timeline & Forensics Modal -->
-  <div class="modal-backdrop" id="email-modal" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <div>
-          <span class="modal-stage-pill" id="modal-stage-pill">Applied</span>
-          <h3 id="modal-subject">Subject Line</h3>
+      <!-- VIEW 1: Applications Data Grid View (Default) -->
+      <div class="view-panel" id="view-apps-panel">
+        <div class="grid-table-container">
+          <table class="data-grid" id="applications-table">
+            <thead>
+              <tr>
+                <th style="width: 75px;">ID</th>
+                <th style="width: 190px;">Company</th>
+                <th style="width: 160px;">Stage</th>
+                <th style="width: 200px;">Role</th>
+                <th>Timeline & Events</th>
+                <th style="width: 130px; text-align: center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr>
+                <td colspan="6" class="empty-state">
+                  <div class="empty-wrap">
+                    <div class="empty-icon">📂</div>
+                    <h4>Loading applications...</h4>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <button class="btn-close" id="btn-close-modal" aria-label="Close">&times;</button>
       </div>
-      <div class="modal-body">
-        <div class="modal-meta-grid">
-          <div><strong>Sender / Stage:</strong> <span id="modal-from"></span></div>
-          <div><strong>Activity Timeline:</strong> <span id="modal-date"></span></div>
+
+      <!-- VIEW 2: Kanban Pipeline View -->
+      <div class="view-panel" id="view-kanban-panel" style="display: none;">
+        <div class="kanban-grid" id="kanban-board">
+          <!-- Columns dynamically populated via app.js -->
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span class="kanban-col-title">⏳ Under Review</span>
+              <span class="kanban-col-count" id="kanban-cnt-applied">5</span>
+            </div>
+            <div class="kanban-col-body" id="kanban-col-applied"></div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span class="kanban-col-title">📅 Interviews</span>
+              <span class="kanban-col-count" id="kanban-cnt-interview">3</span>
+            </div>
+            <div class="kanban-col-body" id="kanban-col-interview"></div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span class="kanban-col-title">🎉 Genuine Offers</span>
+              <span class="kanban-col-count" id="kanban-cnt-offer">2</span>
+            </div>
+            <div class="kanban-col-body" id="kanban-col-offer"></div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-header">
+              <span class="kanban-col-title">❌ Rejected / Stalled</span>
+              <span class="kanban-col-count" id="kanban-cnt-rejected">3</span>
+            </div>
+            <div class="kanban-col-body" id="kanban-col-rejected"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 3: Scam Defense Quarantine Studio -->
+      <div class="view-panel" id="view-scams-panel" style="display: none;">
+        <div class="studio-intro-banner">
+          <div class="banner-badge">AI FORENSIC QUARANTINE</div>
+          <h3>Quarantined Employment Fraud & Advance-Fee Phishing</h3>
+          <p>Scammers exploit vulnerable laid-off engineers. These 4 emails were isolated using multi-signal heuristics and Google Gemini analysis.</p>
+        </div>
+        <div class="scam-studio-grid" id="scam-cards-list">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- VIEW 4: Follow-Up Copilot -->
+      <div class="view-panel" id="view-followups-panel" style="display: none;">
+        <div class="copilot-intro-banner">
+          <div class="banner-badge badge-amber">STAGNANCY DETECTOR</div>
+          <h3>Follow-Up Queue (Silent for 7+ Days)</h3>
+          <p>Never lose momentum. These 4 companies haven't responded in over a week. Click below to copy custom outreach drafts.</p>
+        </div>
+        <div class="followup-copilot-grid" id="followup-cards-list">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Hidden compat sections for JS references -->
+      <div id="scam-alerts-section" style="display: none;"></div>
+      <div id="followup-section" style="display: none;"></div>
+    </main>
+
+    <!-- Slide-Over Inspection Drawer (Replaces modal) -->
+    <aside class="detail-drawer" id="detail-drawer">
+      <div class="drawer-header">
+        <div class="drawer-header-info">
+          <span class="stage-pill" id="drawer-stage-pill">Applied</span>
+          <h3 class="drawer-title" id="drawer-title">Company Name</h3>
+          <p class="drawer-sub" id="drawer-sub">Role / Sender</p>
+        </div>
+        <button class="drawer-close-btn" id="btn-close-drawer" aria-label="Close Drawer">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        <div class="drawer-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">ID & Range</span>
+            <span class="meta-val" id="drawer-meta-range">-</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Events Logged</span>
+            <span class="meta-val" id="drawer-meta-events">0</span>
+          </div>
         </div>
 
-        <!-- Scam warning inside modal -->
-        <div class="modal-scam-box" id="modal-scam-box" style="display: none;">
-          <div class="scam-box-title-row">
-            <div class="scam-box-title">🚨 Forensic Reasons for Fake Offer Classification:</div>
-            <button class="btn btn-sm btn-voice" id="modal-btn-voice-warning">
+        <!-- Scam warning inside drawer -->
+        <div class="drawer-scam-box" id="drawer-scam-box" style="display: none;">
+          <div class="scam-box-header">
+            <strong>🚨 Forensic Reasons Flagged:</strong>
+            <button class="btn btn-xs btn-voice" id="drawer-btn-voice-warning">
               🔊 Speak Scam Warning
             </button>
           </div>
-          <ul id="modal-scam-reasons"></ul>
+          <ul class="scam-reasons-list" id="drawer-scam-reasons"></ul>
         </div>
 
-        <!-- Follow-up draft box inside modal -->
-        <div class="modal-followup-box" id="modal-followup-box" style="display: none;">
+        <!-- Follow-up draft inside drawer -->
+        <div class="drawer-followup-box" id="drawer-followup-box" style="display: none;">
           <div class="followup-box-header">
-            <span>🔔 Follow-up Reminder (<span id="modal-days-silent">0</span> days silent)</span>
-            <button class="btn btn-sm btn-primary" id="modal-btn-copy-draft">Copy Outreach Draft</button>
+            <span>🔔 Follow-up Needed (<strong id="drawer-days-silent">0</strong> days silent)</span>
+            <button class="btn btn-xs btn-primary" id="drawer-btn-copy-draft">📋 Copy Draft</button>
           </div>
-          <pre class="followup-draft-text" id="modal-followup-draft"></pre>
+          <pre class="followup-draft-snippet" id="drawer-followup-draft"></pre>
         </div>
 
-        <div class="modal-email-content">
-          <h4>Communication Records:</h4>
-          <div class="email-body-box" id="modal-body-content"></div>
+        <!-- Timeline / Email Bodies Tree -->
+        <div class="drawer-timeline-section">
+          <h4 class="section-title">Communication Journey:</h4>
+          <div class="timeline-tree" id="drawer-timeline-content"></div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" id="btn-modal-close-footer">Close</button>
+
+      <div class="drawer-footer">
+        <button class="btn btn-secondary btn-full" id="btn-drawer-dismiss">Close Panel</button>
       </div>
-    </div>
+    </aside>
   </div>
 
-  <!-- Toast Notification Container -->
+  <!-- Legacy Hidden Modal for 100% JS backward compatibility -->
+  <div id="email-modal" style="display: none;">
+    <span id="modal-stage-pill"></span>
+    <span id="modal-subject"></span>
+    <span id="modal-from"></span>
+    <span id="modal-date"></span>
+    <div id="modal-scam-box" style="display: none;"><ul id="modal-scam-reasons"></ul><button id="modal-btn-voice-warning"></button></div>
+    <div id="modal-followup-box" style="display: none;"><span id="modal-days-silent"></span><pre id="modal-followup-draft"></pre><button id="modal-btn-copy-draft"></button></div>
+    <div id="modal-body-content"></div>
+    <button id="btn-close-modal"></button>
+    <button id="btn-modal-close-footer"></button>
+  </div>
+
+  <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
 
   <script src="app.js"></script>

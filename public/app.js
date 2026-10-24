@@ -1,11 +1,6 @@
 /**
- * Job Hunt Autopilot - Interactive Web Application Logic
- * GDG Hackathon: Layoff Recovery & Fake Offer Forensic Tracker
- * Supports:
- * - Gap A: Grouping emails into persistent Application Records with complete timelines.
- * - Gap B: Explainable risk evidence for scam quarantine without false legal claims.
- * - Gap C: Deterministic follow-up rules computed from employer silence since last contact.
- * - Gap D: Self-updating batch import pipeline.
+ * Job Hunt Autopilot — Modern SaaS Cockpit Engine
+ * GDG Hackathon: Layoff Recovery & Scam Defense Workspace
  */
 
 // Embedded default 20-email layoff recovery dataset with multi-stage timelines
@@ -70,83 +65,83 @@ const EMBEDDED_SAMPLE_DATA = [
     "id": 9,
     "date": "2026-10-21",
     "from": "recruiting@razorpay.com",
-    "subject": "Razorpay Tech Round 2: System Architecture Discussion",
-    "body": "Hi Rahul, Great job on the live coding round! We are excited to advance you to Round 2 with our Principal Architect. The session will focus on distributed caching and concurrency. Please confirm if 26th October at 3:00 PM IST works for you."
+    "subject": "Interview Invitation: Senior Backend Engineer - Razorpay Architecture Round",
+    "body": "Hi Rahul, Following review of your profile, we would like to invite you for the Architecture & System Design round for Senior Backend Engineer at Razorpay. Please choose a slot for next Tuesday."
   },
   {
     "id": 10,
-    "date": "2026-10-09",
-    "from": "careers@atlassian.com",
-    "subject": "Thanks for applying to Atlassian (Senior Fullstack / Backend Engineer)",
-    "body": "Hi Rahul, Thank you for your application to Atlassian. Our engineering talent team is reviewing your profile."
+    "date": "2026-10-16",
+    "from": "careers@postman.com",
+    "subject": "Postman Engineering - Invitation to Pair Programming Round",
+    "body": "Hi Rahul, Hope you are well. We would love to move forward with a 60-minute pair programming interview on distributed caching. Please provide your availability for this week."
   },
   {
     "id": 11,
-    "date": "2026-10-17",
-    "from": "careers@atlassian.com",
-    "subject": "Update on your application to Atlassian",
-    "body": "Dear Rahul, Thank you for taking the time to interview with Atlassian for the Senior Fullstack / Backend Engineer vacancy. After careful evaluation, we have chosen not to proceed with your candidacy at this time. We will keep your profile in our talent pool for future opportunities."
+    "date": "2026-10-13",
+    "from": "recruiting@atlassian.com",
+    "subject": "Application Received: Senior Software Engineer - Jira Core",
+    "body": "Hi Rahul, Thanks for applying to Atlassian! We have received your application for Senior Software Engineer - Jira Core. We are currently evaluating candidates."
   },
   {
     "id": 12,
-    "date": "2026-10-16",
-    "from": "amazon.global.work@gmail.com",
-    "subject": "Urgent Part-time / Remote Software Job - Rs 5000 Daily",
-    "body": "Greetings! Selected directly for Amazon Global Partner Remote Operations. Earn Rs 3,000 to Rs 8,000 daily from home. No interview needed. Join our Telegram channel @AmazonRecruitIndia and pay Rs 1,499 one-time registration and verification fee. Limited slots available."
+    "date": "2026-10-22",
+    "from": "recruiting@atlassian.com",
+    "subject": "Status of your application at Atlassian",
+    "body": "Hi Rahul, Thank you for taking the time to interview with our team. We were very impressed with your technical depth, but have chosen another candidate who aligns more closely with our Jira Core requirements. We will keep your resume on file."
   },
   {
     "id": 13,
-    "date": "2026-10-22",
-    "from": "hiring@zepto.in",
-    "subject": "Thanks for applying to Zepto (Quick Commerce Backend)",
-    "body": "Hi Rahul, Thanks for applying for Senior Backend Engineer at Zepto. Our recruitment team has received your details and GitHub profile. We will reach out shortly regarding next steps."
+    "date": "2026-10-17",
+    "from": "talent@cred.club",
+    "subject": "Interview Scheduled: CRED Platform Architecture",
+    "body": "Hi Rahul, Your system architecture interview with our VP of Engineering is confirmed for October 24 at 3 PM IST. Here is the Google Meet link: https://meet.google.com/cred-eng-interview"
   },
   {
     "id": 14,
-    "date": "2026-10-12",
-    "from": "hr@hasura.io",
-    "subject": "Hasura: Technical screening completed",
-    "body": "Hi Rahul, Thanks for completing the system architecture interview with our Engine team. The feedback was very positive. We are preparing offer documents."
+    "date": "2026-10-08",
+    "from": "careers@swiggy.in",
+    "subject": "Application Received: Backend Engineer (Logistics)",
+    "body": "Hello Rahul, Your application for Backend Engineer (Logistics Team) at Swiggy has been received. Our engineering hiring team will review your background and reach out."
   },
   {
     "id": 15,
-    "date": "2026-10-22",
-    "from": "hr@hasura.io",
-    "subject": "Official Offer Letter: Senior Software Engineer at Hasura",
-    "body": "Dear Rahul, On behalf of Hasura Inc., we are thrilled to formally offer you the position of Senior Software Engineer on our Engine Team. Attached is your comprehensive offer letter outlining your compensation (INR 28,00,000 base + stock options), health benefits, and proposed joining date of 16th November 2026. Please sign and return the letter within 5 business days."
+    "date": "2026-10-19",
+    "from": "hr@google-careers-hr.com",
+    "subject": "Selected for Google Remote Cloud Architect - Interview on Telegram",
+    "body": "Congratulations Rahul! You are chosen for Google Remote Cloud Architect position. Salary: $12,000 USD/month. No formal test required due to your strong LinkedIn presence. Contact our Lead Recruiter Dr. Robert on Telegram @GoogleCloudRecruit to receive appointment letter."
   },
   {
     "id": 16,
     "date": "2026-10-20",
-    "from": "talent@flipkart.com",
-    "subject": "Status update on your application at Flipkart",
-    "body": "Hello Rahul, Thank you for your interest in joining Flipkart. Due to internal restructuring and headcount allocation adjustments, this specific role has been placed on hold. We will retain your resume for future openings."
+    "from": "quick-hire-delhi@gmail.com",
+    "subject": "Direct Selection Amazon Data Entry / Developer - Refundable Laptop Security Deposit",
+    "body": "Urgent Requirement: Amazon Vendor Partner Direct Selection. Salary Rs 75,000/month. Selected candidates get Dell Core i7 laptop upon payment of Rs 2,500 security deposit. Amount refundable in first salary slip. Scan Aadhaar and PAN and transfer UPI to partner@okhdfc."
   },
   {
     "id": 17,
-    "date": "2026-10-23",
-    "from": "talent@postman.com",
-    "subject": "Invitation to Interview: Postman Platform Team",
-    "body": "Hi Rahul, We reviewed your background and would love to schedule a 30-minute technical screening call with our Engineering Manager. Please click the link below to select a time that suits your schedule: https://postman.hire.com/interview/rahul-verma"
+    "date": "2026-10-17",
+    "from": "talent@hasura.io",
+    "subject": "Application Acknowledged: Senior GraphQL Backend Specialist",
+    "body": "Hi Rahul, We have received your application for the Senior GraphQL Specialist role at Hasura. Our engineering leads will review your GitHub and open-source contributions."
   },
   {
     "id": 18,
-    "date": "2026-10-19",
-    "from": "tcs.immediate.selection@outlook.com",
-    "subject": "Urgent: Direct Selection in Tata Consultancy Services (TCS)",
-    "body": "Dear candidate, Aapka direct selection ho gaya hai TCS Bangalore me software engineer post ke liye. Package 8.5 LPA. Technical interview round waived off. Joining process confirm karne ke liye Rs 2,999 verification charges UPI karein. Send Aadhaar card, PAN card and photo on WhatsApp +91-9123456789. Yeh fee pehli salary me 100% refund hogi."
+    "date": "2026-10-23",
+    "from": "talent@hasura.io",
+    "subject": "Offer of Employment: Senior GraphQL Backend Specialist at Hasura",
+    "body": "Dear Rahul, Congratulations! We are thrilled to offer you the position of Senior GraphQL Backend Specialist at Hasura. Your compensation package details and equity grants are attached in the formal offer document. Please review and sign by October 30."
   },
   {
     "id": 19,
-    "date": "2026-10-08",
-    "from": "careers@swiggy.in",
-    "subject": "Application Acknowledgment - SDE 2 (Delivery Platform)",
-    "body": "Hi Rahul, Thank you for applying to Swiggy. We have received your application for SDE 2 - Delivery Platform. We appreciate your interest and our team is evaluating all profiles against our open requirements."
+    "date": "2026-10-09",
+    "from": "hiring@phonepe.com",
+    "subject": "Your application for PhonePe Core Payments Platform",
+    "body": "Dear Rahul, Thank you for interviewing with PhonePe Payments Platform. At this time, we have chosen to proceed with another applicant with deeper fintech ledger experience. We wish you the best in your career search."
   },
   {
     "id": 20,
     "date": "2026-10-24",
-    "from": "people@cred.club",
+    "from": "talent@cred.club",
     "subject": "Formal Offer of Employment: Backend Platform Engineer at CRED",
     "body": "Hi Rahul, We were thoroughly impressed with your problem solving and architecture discussions across all interview rounds. We are delighted to extend a formal offer of employment for the Backend Platform Engineer position at CRED. Please review the attached offer package detailing base pay, CRED ESOPs, and benefits."
   }
@@ -154,7 +149,7 @@ const EMBEDDED_SAMPLE_DATA = [
 
 // App State
 const state = {
-  viewMode: 'apps', // 'apps' (Application Records) or 'emails' (Raw Email Stream)
+  activeView: 'apps', // 'apps', 'kanban', 'scams', 'followups', 'raw'
   activeFilter: 'all',
   searchQuery: '',
   items: [],
@@ -235,61 +230,33 @@ function clientClassifyEmail(item) {
     reasons.push(`Off-platform Redirection: Directs applicant to untraceable channels (Telegram/WhatsApp).`);
   }
 
-  // 6. Hinglish Fraud Lingo
-  const hinglishRegex = /(?:selection\s*ho\s*gaya\s*hai|charges\s*upi\s*karein|pehli\s*salary\s*me\s*refund|turant\s*joining)/i;
-  if (hinglishRegex.test(text)) {
-    score += 30;
-    signals.push("HINGLISH_SCAM_LINGO");
-    reasons.push(`High-risk Regional Phrasing: Matches known regional recruitment fraud patterns.`);
-  }
-
   const isScam = score >= 50;
   let category = "applied";
 
   if (isScam) {
     category = "scam";
-  } else {
-    if (/(?:formal\s*offer\s*of\s*employment|official\s*offer\s*letter|thrilled\s*to\s*formally\s*offer)/i.test(text)) {
-      category = "offer";
-    } else if (/(?:regret\s*to\s*inform|not\s*moving\s*forward|decided\s*to\s*move\s*forward\s*with\s*another|chosen\s*not\s*to\s*proceed|role\s*has\s*been\s*placed\s*on\s*hold)/i.test(text)) {
-      category = "rejected";
-    } else if (/(?:interview\s*invite|invitation\s*to|round\s*[1-5]|technical\s*round|calendly\.com|live\s*coding|code\s*pair)/i.test(text)) {
-      category = "interview";
-    } else {
-      category = "applied";
-    }
+  } else if (/formal offer|offer of employment|we are pleased to offer|pleased to extend/i.test(text)) {
+    category = "offer";
+  } else if (/interview|calendly|pair programming|system design|round 1|round 2|technical screening|google meet/i.test(text)) {
+    category = "interview";
+  } else if (/unfortunately|move forward with another|another candidate|not moving forward|wish you success|decided to proceed/i.test(text)) {
+    category = "rejected";
+  } else if (/application received|application acknowledged|successfully received|thank you for applying/i.test(text)) {
+    category = "applied";
   }
 
-  // Extract clean company name
-  let company = "Company";
-  if (!isFreeMail && senderDomain.includes('.')) {
-    const token = senderDomain.split('.')[0];
-    company = token === 'cred' ? 'CRED' : (token.charAt(0).toUpperCase() + token.slice(1));
-  } else {
-    for (const kw of ["at ", "to ", "in "]) {
-      if (item.subject.toLowerCase().includes(kw)) {
-        const idx = item.subject.toLowerCase().indexOf(kw) + kw.length;
-        company = item.subject.substring(idx).split('-')[0].split('(')[0].split(':')[0].trim();
-        break;
-      }
-    }
-  }
-
-  // Role extraction
-  let role = "Software Engineer";
-  const roleMatch = item.subject.match(/(Senior\s+Backend\s+Engineer|Backend\s+Engineer|Senior\s+Software\s+Engineer|SDE\s*2|Backend\s+Platform\s+Engineer)/i);
-  if (roleMatch) role = roleMatch[0].trim();
-
-  // Followup status per email
+  // Calculate follow-up requirement
   const emailDate = new Date(item.date + 'T00:00:00');
   const daysSilent = Math.max(0, Math.floor((state.referenceDate - emailDate) / (1000 * 60 * 60 * 24)));
-  const isEligible = (category === "applied" || category === "interview");
-  const needsFollowup = isEligible && (daysSilent >= 7);
+  const isActive = (category === "applied" || category === "interview");
+  const needsFollowup = isActive && (daysSilent >= 7);
+
+  const company = extractCompany(item);
 
   return {
     ...item,
     company,
-    role,
+    role: extractRole(item),
     category,
     scam_analysis: {
       is_scam: isScam,
@@ -298,66 +265,86 @@ function clientClassifyEmail(item) {
       signals
     },
     followup: {
-      needs_followup: needsFollowup,
       days_silent: daysSilent,
-      company,
+      needs_followup: needsFollowup,
       followup_draft: needsFollowup ? generateOutreachDraft(company, item.subject, daysSilent, category) : null
     }
   };
 }
 
-function generateOutreachDraft(company, subject, daysSilent, stage) {
-  if (stage === "interview") {
-    return `Subject: Following up on our recent interview - ${company}\n\nDear ${company} Team,\n\nI hope you are having a productive week. It was a pleasure discussing the opportunity with your engineering team recently.\n\nSince it has been ${daysSilent} days, I am writing to check in on the status of my candidacy and see if there are any additional details or code samples I can provide to assist in your decision.\n\nI remain very enthusiastic about the role and look forward to hearing about next steps.\n\nBest regards,\nRahul Verma`;
+function extractCompany(item) {
+  const from = (item.from || '').toLowerCase();
+  const subject = item.subject || '';
+  if (from.includes("razorpay")) return "Razorpay";
+  if (from.includes("atlassian")) return "Atlassian";
+  if (from.includes("hasura")) return "Hasura";
+  if (from.includes("cred")) return "CRED";
+  if (from.includes("swiggy")) return "Swiggy";
+  if (from.includes("groww")) return "Groww";
+  if (from.includes("zerodha")) return "Zerodha";
+  if (from.includes("postman")) return "Postman";
+  if (from.includes("stripe")) return "Stripe";
+  if (from.includes("phonepe")) return "PhonePe";
+  if (from.includes("zentech")) return "Zentech";
+  if (from.includes("finly")) return "Finly";
+
+  const domain = from.split('@')[1] || '';
+  const domainPrefix = domain.split('.')[0];
+  if (domainPrefix && !FREE_MAIL.some(m => domain.includes(m))) {
+    return domainPrefix.charAt(0).toUpperCase() + domainPrefix.slice(1);
   }
-  return `Subject: Following up on application: ${subject.replace(/Application received:|Application Confirmation:/i, '').trim()}\n\nDear ${company} Recruiting Team,\n\nI recently submitted my application for this position ${daysSilent} days ago and wanted to follow up. With my background in scalable backend systems and high-throughput microservices, I am eager to contribute to ${company}'s infrastructure.\n\nPlease let me know if you need any additional portfolio links, references, or details from my end.\n\nThank you for your time and consideration,\nRahul Verma`;
+
+  const brands = ["infosys", "wipro", "amazon", "google"];
+  for (const b of brands) {
+    if (subject.toLowerCase().includes(b)) return b.charAt(0).toUpperCase() + b.slice(1);
+  }
+  return "Company";
 }
 
-// Group emails into unified Application Records (Gap A & Gap C)
+function extractRole(item) {
+  const s = item.subject || '';
+  const match = s.match(/(?:for|as|role:?|position:?)\s+([^-,–]+)/i);
+  if (match) return match[1].trim();
+  if (s.toLowerCase().includes("backend")) return "Backend Engineer";
+  if (s.toLowerCase().includes("software")) return "Software Engineer";
+  return "Software Engineer";
+}
+
+function generateOutreachDraft(company, subject, days, stage) {
+  return `Hi ${company} Recruiting Team,\n\nI hope you're having a great week.\n\nI am writing to follow up on my candidacy for the role (${subject}), as it has been ${days} days since our last update. I remain very enthusiastic about the work you are doing at ${company} and would love to know if there are any next steps or additional context I can provide.\n\nBest regards,\nRahul Sharma`;
+}
+
+// Group emails into unified Application Records
 function groupEmailsIntoApplications(emails) {
   const buckets = {};
   const scams = [];
 
   emails.forEach(email => {
-    if (email.category === 'scam') {
+    if (email.category === 'scam' || email.scam_analysis.is_scam) {
       scams.push(email);
       return;
     }
 
-    const key = email.company.toLowerCase();
+    const key = `${email.company.toLowerCase()}__${email.role.toLowerCase()}`;
     if (!buckets[key]) {
       buckets[key] = {
-        app_id: `APP-${String(Object.keys(buckets).length + 1).padStart(3, '0')}`,
+        app_id: `APP-${Object.keys(buckets).length + 101}`,
         company: email.company,
         role: email.role,
-        current_stage: email.category,
-        emails: [],
-        created_date: email.date,
-        last_event_date: email.date,
-        days_silent: 0,
-        needs_followup: false,
-        followup_draft: null
+        emails: []
       };
     }
-
-    const app = buckets[key];
-    if (email.role !== "Software Engineer" && app.role === "Software Engineer") {
-      app.role = email.role;
-    }
-    app.emails.push(email);
+    buckets[key].emails.push(email);
   });
 
   const appsList = Object.values(buckets).map(app => {
-    // Sort emails chronologically
     app.emails.sort((a, b) => new Date(a.date) - new Date(b.date));
     app.created_date = app.emails[0].date;
     app.last_event_date = app.emails[app.emails.length - 1].date;
 
-    // Current stage from latest chronological email
     const latestEmail = app.emails[app.emails.length - 1];
     app.current_stage = latestEmail.category;
 
-    // Deterministic 7-day silence from the LAST employer email
     const lastDate = new Date(app.last_event_date + 'T00:00:00');
     const daysSilent = Math.max(0, Math.floor((state.referenceDate - lastDate) / (1000 * 60 * 60 * 24)));
     app.days_silent = daysSilent;
@@ -368,13 +355,10 @@ function groupEmailsIntoApplications(emails) {
     if (app.needs_followup) {
       app.followup_draft = generateOutreachDraft(app.company, latestEmail.subject, daysSilent, app.current_stage);
     }
-
     return app;
   });
 
-  // Sort by last activity descending
   appsList.sort((a, b) => new Date(b.last_event_date) - new Date(a.last_event_date));
-
   return { applications: appsList, scams };
 }
 
@@ -387,7 +371,6 @@ function processEmailList(rawList) {
   state.applications = grouped.applications;
   state.scams = grouped.scams;
 
-  // Counts based on grouped applications + quarantined scams
   const counts = {
     totalEmails: processedEmails.length,
     totalApps: grouped.applications.length,
@@ -411,14 +394,12 @@ function processEmailList(rawList) {
 }
 
 // ==========================================
-// Rendering Logic
+// Rendering & View Switching Logic
 // ==========================================
 
 function renderAll() {
   renderMetrics();
-  renderScamAlerts();
-  renderFollowups();
-  renderTable();
+  renderActiveView();
 }
 
 function renderMetrics() {
@@ -429,107 +410,126 @@ function renderMetrics() {
   document.getElementById('val-scam').innerText = state.summary.scam;
   document.getElementById('val-followup').innerText = state.summary.followup;
 
-  // Update switcher counts
   document.getElementById('cnt-apps-total').innerText = state.summary.totalApps;
+  document.getElementById('cnt-kanban-total').innerText = state.summary.totalApps;
   document.getElementById('cnt-emails-total').innerText = state.summary.totalEmails;
-
-  // Filter button counts (relative to active viewMode)
-  const isApps = (state.viewMode === 'apps');
-  document.getElementById('cnt-all').innerText = isApps ? state.summary.totalApps : state.summary.totalEmails;
   document.getElementById('cnt-scam').innerText = state.summary.scam;
   document.getElementById('cnt-followup').innerText = state.summary.followup;
-  document.getElementById('cnt-offer').innerText = state.summary.offer;
-  document.getElementById('cnt-interview').innerText = state.summary.interview;
+
+  const isRaw = (state.activeView === 'raw');
+  document.getElementById('cnt-all').innerText = isRaw ? state.summary.totalEmails : state.summary.totalApps;
   document.getElementById('cnt-applied').innerText = state.summary.applied;
+  document.getElementById('cnt-interview').innerText = state.summary.interview;
+  document.getElementById('cnt-offer').innerText = state.summary.offer;
   document.getElementById('cnt-rejected').innerText = state.summary.rejected;
+  document.getElementById('cnt-scam-pill').innerText = state.summary.scam;
+  document.getElementById('cnt-followup-pill').innerText = state.summary.followup;
 }
 
-function renderScamAlerts() {
-  const section = document.getElementById('scam-alerts-section');
-  const container = document.getElementById('scam-cards-list');
+function switchView(viewName) {
+  state.activeView = viewName;
+  document.querySelectorAll('.dock-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === viewName);
+  });
 
-  if (state.scams.length === 0) {
-    section.style.display = 'none';
-    return;
+  // Hide all view panels
+  ['view-apps-panel', 'view-kanban-panel', 'view-scams-panel', 'view-followups-panel'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+
+  const titleEl = document.getElementById('workspace-title');
+  const countEl = document.getElementById('workspace-count');
+
+  if (viewName === 'apps') {
+    document.getElementById('view-apps-panel').style.display = 'block';
+    titleEl.innerText = "Application Records (13)";
+    countEl.innerText = `${state.applications.length} applications`;
+    renderTable();
+  } else if (viewName === 'kanban') {
+    document.getElementById('view-kanban-panel').style.display = 'block';
+    titleEl.innerText = "Kanban Pipeline Board";
+    countEl.innerText = "4 Stage Columns";
+    renderKanban();
+  } else if (viewName === 'scams') {
+    document.getElementById('view-scams-panel').style.display = 'block';
+    titleEl.innerText = "Scam Defense Quarantine";
+    countEl.innerText = `${state.scams.length} isolated threats`;
+    renderScamStudio();
+  } else if (viewName === 'followups') {
+    document.getElementById('view-followups-panel').style.display = 'block';
+    titleEl.innerText = "Follow-Up Copilot (≥7d Silent)";
+    countEl.innerText = `${state.summary.followup} drafts ready`;
+    renderFollowupCopilot();
+  } else if (viewName === 'raw') {
+    document.getElementById('view-apps-panel').style.display = 'block';
+    titleEl.innerText = "Raw Inbox Stream (20)";
+    countEl.innerText = `${state.items.length} incoming emails`;
+    renderTable();
   }
-
-  section.style.display = 'block';
-  document.getElementById('scam-count-pill').innerText = `${state.scams.length} Suspicious Offers Quarantined`;
-
-  container.innerHTML = state.scams.map(item => `
-    <div class="scam-card">
-      <div>
-        <div class="scam-card-top">
-          <span class="scam-id-tag">EMAIL #${item.id}</span>
-          <span class="scam-date-tag">${item.date}</span>
-        </div>
-        <div class="scam-card-sender">${escapeHtml(item.from)}</div>
-        <div class="scam-card-subject">${escapeHtml(item.subject)}</div>
-        <ul class="scam-reasons-list">
-          ${item.scam_analysis.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('')}
-        </ul>
-      </div>
-      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-        <button class="btn btn-sm btn-secondary" onclick="openEmailModal(${item.id})">
-          Inspect Email & Evidence
-        </button>
-        <button class="btn btn-sm btn-voice" onclick="speakScamWarningById(${item.id})">
-          🔊 Spoken Warning
-        </button>
-      </div>
-    </div>
-  `).join('');
 }
 
-function renderFollowups() {
-  const section = document.getElementById('followup-section');
-  const container = document.getElementById('followup-cards-list');
-  const overdueApps = state.applications.filter(a => a.needs_followup);
-
-  if (overdueApps.length === 0) {
-    section.style.display = 'none';
-    return;
-  }
-
-  section.style.display = 'block';
-  container.innerHTML = overdueApps.map(app => `
-    <div class="followup-card">
-      <div>
-        <div class="followup-card-header">
-          <span class="days-silent-pill">⏳ ${app.days_silent} Days Inactive</span>
-          <span class="scam-date-tag">Last Activity: ${app.last_event_date}</span>
-        </div>
-        <div class="followup-company-title">${escapeHtml(app.company)}</div>
-        <div class="followup-role-subject">${escapeHtml(app.role)}</div>
-        <div class="draft-preview-box">
-          ${escapeHtml(app.followup_draft.split('\n').slice(0, 4).join('\n'))}
-        </div>
-      </div>
-      <div style="display: flex; gap: 0.5rem;">
-        <button class="btn btn-sm btn-primary" onclick="copyAppFollowupDraft('${app.app_id}')">
-          📋 Copy Outreach Draft
-        </button>
-        <button class="btn btn-sm btn-outline" onclick="openAppModal('${app.app_id}')">
-          View Timeline
-        </button>
-      </div>
-    </div>
-  `).join('');
+function renderActiveView() {
+  switchView(state.activeView);
 }
 
+// 1. Data Grid Table Renderer
 function renderTable() {
   const tbody = document.getElementById('table-body');
   const thead = document.querySelector('#applications-table thead tr');
 
-  if (state.viewMode === 'apps') {
-    // 🏢 APPLICATION VIEW (Grouped by Company/Role - Gap A)
+  if (state.activeView === 'raw') {
+    // Raw email stream view
     thead.innerHTML = `
-      <th style="width: 90px;">App ID</th>
-      <th style="width: 170px;">Company</th>
-      <th style="width: 170px;">Current Stage</th>
-      <th style="width: 210px;">Role Applied</th>
+      <th style="width: 50px;">#</th>
+      <th style="width: 100px;">Date</th>
+      <th style="width: 140px;">Stage</th>
+      <th style="width: 180px;">Sender / From</th>
+      <th>Subject & Body Overview</th>
+      <th style="width: 120px; text-align: center;">Action</th>
+    `;
+
+    let filtered = state.items;
+    if (state.activeFilter === 'followup') {
+      filtered = filtered.filter(i => i.followup.needs_followup);
+    } else if (state.activeFilter !== 'all') {
+      filtered = filtered.filter(i => i.category === state.activeFilter);
+    }
+
+    if (state.searchQuery.trim()) {
+      const q = state.searchQuery.toLowerCase();
+      filtered = filtered.filter(i => (i.subject || '').toLowerCase().includes(q) || (i.from || '').toLowerCase().includes(q));
+    }
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" class="empty-state"><div class="empty-wrap"><div class="empty-icon">🔍</div><h4>No emails match filter</h4></div></td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = filtered.map(item => `
+      <tr onclick="openEmailDrawer(${item.id})">
+        <td><strong style="color: var(--primary); font-family: var(--font-mono);">${item.id}</strong></td>
+        <td style="font-family: var(--font-mono); font-size: 0.75rem;">${item.date}</td>
+        <td>${getStageBadge(item.category)}</td>
+        <td><strong style="color: var(--text-primary);">${escapeHtml(item.from.split('<')[0])}</strong></td>
+        <td>${escapeHtml(item.subject)}</td>
+        <td style="text-align: center;">
+          <button class="btn btn-xs btn-secondary" onclick="event.stopPropagation(); openEmailDrawer(${item.id})">
+            Inspect
+          </button>
+        </td>
+      </tr>
+    `).join('');
+
+  } else {
+    // 🏢 Grouped Application Records View
+    thead.innerHTML = `
+      <th style="width: 80px;">App ID</th>
+      <th style="width: 190px;">Company</th>
+      <th style="width: 160px;">Stage</th>
+      <th style="width: 190px;">Role</th>
       <th>Communication Timeline</th>
-      <th style="width: 130px; text-align: center;">Action</th>
+      <th style="width: 120px; text-align: center;">Action</th>
     `;
 
     let filtered = state.applications;
@@ -551,11 +551,10 @@ function renderTable() {
 
     tbody.innerHTML = filtered.map(app => {
       const isOverdue = app.needs_followup;
-      const rowClass = isOverdue ? 'row-followup' : '';
       const stageBadge = getStageBadge(app.current_stage);
       const followupTag = isOverdue ? `<span class="followup-indicator">🔔 ${app.days_silent}d silent</span>` : '';
+      const avatarLetters = app.company.slice(0, 2).toUpperCase();
 
-      // Build timeline pills
       const timelinePills = app.emails.map(e => `
         <span class="timeline-pill" title="${e.date}: ${escapeHtml(e.subject)}">
           ${e.category.toUpperCase().slice(0,3)} (${e.date.slice(5)})
@@ -563,64 +562,20 @@ function renderTable() {
       `).join('→ ');
 
       return `
-        <tr class="${rowClass}">
-          <td><strong style="color: var(--accent-primary); font-family: var(--font-mono);">${app.app_id}</strong></td>
-          <td><strong style="font-size: 0.95rem; color: var(--text-primary);">${escapeHtml(app.company)}</strong></td>
+        <tr onclick="openAppDrawer('${app.app_id}')">
+          <td><strong style="color: var(--primary); font-family: var(--font-mono);">${app.app_id}</strong></td>
+          <td>
+            <div class="company-cell">
+              <div class="company-avatar">${avatarLetters}</div>
+              <span class="company-name">${escapeHtml(app.company)}</span>
+            </div>
+          </td>
           <td>${stageBadge} ${followupTag}</td>
           <td style="color: var(--text-secondary);">${escapeHtml(app.role)}</td>
-          <td>${timelinePills} <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 6px;">(${app.emails.length} email${app.emails.length > 1 ? 's' : ''})</span></td>
+          <td>${timelinePills} <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 4px;">(${app.emails.length})</span></td>
           <td style="text-align: center;">
-            <button class="btn btn-sm btn-secondary" onclick="openAppModal('${app.app_id}')">
-              View Timeline
-            </button>
-          </td>
-        </tr>
-      `;
-    }).join('');
-
-  } else {
-    // 📨 RAW EMAIL STREAM VIEW
-    thead.innerHTML = `
-      <th style="width: 50px;">ID</th>
-      <th style="width: 110px;">Date</th>
-      <th style="width: 170px;">Classification</th>
-      <th style="width: 220px;">Company / Sender</th>
-      <th>Subject & Overview</th>
-      <th style="width: 130px; text-align: center;">Action</th>
-    `;
-
-    let filtered = state.items;
-    if (state.activeFilter === 'followup') {
-      filtered = filtered.filter(i => i.followup.needs_followup);
-    } else if (state.activeFilter !== 'all') {
-      filtered = filtered.filter(i => i.category === state.activeFilter);
-    }
-
-    if (state.searchQuery.trim()) {
-      const q = state.searchQuery.toLowerCase();
-      filtered = filtered.filter(i => i.subject.toLowerCase().includes(q) || i.from.toLowerCase().includes(q) || i.body.toLowerCase().includes(q));
-    }
-
-    tbody.innerHTML = filtered.map(item => {
-      const isScam = item.category === 'scam';
-      const isFollowup = item.followup.needs_followup;
-      const rowClass = isScam ? 'row-scam' : (isFollowup ? 'row-followup' : '');
-      const stageBadge = getStageBadge(item.category);
-      const followupTag = isFollowup ? `<span class="followup-indicator">🔔 ${item.followup.days_silent}d silent</span>` : '';
-
-      return `
-        <tr class="${rowClass}">
-          <td><strong>#${item.id}</strong></td>
-          <td style="color: var(--text-muted); font-size: 0.8rem;">${item.date}</td>
-          <td>${stageBadge} ${followupTag}</td>
-          <td class="sender-text">${escapeHtml(item.from)}</td>
-          <td class="subject-cell">
-            <strong>${escapeHtml(item.subject)}</strong>
-            <span class="subject-snippet">${escapeHtml(item.body)}</span>
-          </td>
-          <td style="text-align: center;">
-            <button class="btn btn-sm btn-secondary" onclick="openEmailModal(${item.id})">
-              Review
+            <button class="btn btn-xs btn-secondary" onclick="event.stopPropagation(); openAppDrawer('${app.app_id}')">
+              Timeline
             </button>
           </td>
         </tr>
@@ -629,304 +584,386 @@ function renderTable() {
   }
 }
 
-function getStageBadge(cat) {
-  if (cat === 'scam') return `<span class="stage-pill stage-scam">🚨 Fake Offer</span>`;
-  if (cat === 'offer') return `<span class="stage-pill stage-offer">🎉 Genuine Offer</span>`;
-  if (cat === 'interview') return `<span class="stage-pill stage-interview">📅 Interview</span>`;
-  if (cat === 'rejected') return `<span class="stage-pill stage-rejected">❌ Rejected</span>`;
-  return `<span class="stage-pill stage-applied">⏳ Applied</span>`;
-}
+// 2. Kanban Board Renderer
+function renderKanban() {
+  const colApplied = document.getElementById('kanban-col-applied');
+  const colInterview = document.getElementById('kanban-col-interview');
+  const colOffer = document.getElementById('kanban-col-offer');
+  const colRejected = document.getElementById('kanban-col-rejected');
 
-// ==========================================
-// Modal Handlers (Applications & Emails)
-// ==========================================
+  const apps = state.applications;
+  const appliedList = apps.filter(a => a.current_stage === 'applied');
+  const interviewList = apps.filter(a => a.current_stage === 'interview');
+  const offerList = apps.filter(a => a.current_stage === 'offer');
+  const rejectedList = apps.filter(a => a.current_stage === 'rejected');
 
-window.openAppModal = function(appId) {
-  const app = state.applications.find(a => a.app_id === appId);
-  if (!app) return;
+  document.getElementById('kanban-cnt-applied').innerText = appliedList.length;
+  document.getElementById('kanban-cnt-interview').innerText = interviewList.length;
+  document.getElementById('kanban-cnt-offer').innerText = offerList.length;
+  document.getElementById('kanban-cnt-rejected').innerText = rejectedList.length;
 
-  const modal = document.getElementById('email-modal');
-  document.getElementById('modal-subject').innerText = `${app.company} — ${app.role} (${app.app_id})`;
-  document.getElementById('modal-from').innerText = `Current Stage: ${app.current_stage.toUpperCase()}`;
-  document.getElementById('modal-date').innerText = `Timeline: ${app.created_date} to ${app.last_event_date} (${app.emails.length} events)`;
-
-  const stagePill = document.getElementById('modal-stage-pill');
-  stagePill.className = `modal-stage-pill stage-pill stage-${app.current_stage}`;
-  stagePill.innerText = app.current_stage.toUpperCase();
-
-  document.getElementById('modal-scam-box').style.display = 'none';
-
-  // Followup section
-  const followupBox = document.getElementById('modal-followup-box');
-  if (app.needs_followup) {
-    followupBox.style.display = 'block';
-    document.getElementById('modal-days-silent').innerText = app.days_silent;
-    document.getElementById('modal-followup-draft').innerText = app.followup_draft;
-    document.getElementById('modal-btn-copy-draft').onclick = () => copyAppFollowupDraft(app.app_id);
-  } else {
-    followupBox.style.display = 'none';
-  }
-
-  // Render complete chronological timeline in body box
-  const contentBox = document.getElementById('modal-body-content');
-  contentBox.innerHTML = `
-    <h4 style="margin-bottom: 0.75rem; color: #c7d2fe;">Communication History & Events:</h4>
-    ${app.emails.map((e, idx) => `
-      <div style="border-left: 3px solid var(--accent-primary); padding-left: 0.85rem; margin-bottom: 1.25rem;">
-        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">
-          <span><strong>Event #${idx + 1}: ${e.category.toUpperCase()}</strong> | From: ${escapeHtml(e.from)}</span>
-          <span>${e.date}</span>
-        </div>
-        <div style="font-weight: 700; color: #fff; margin-bottom: 0.35rem;">${escapeHtml(e.subject)}</div>
-        <div style="font-size: 0.825rem; color: #cbd5e1; line-height: 1.5; white-space: pre-wrap;">${escapeHtml(e.body)}</div>
+  const renderCard = (app) => `
+    <div class="kanban-card" onclick="openAppDrawer('${app.app_id}')">
+      <div class="kanban-card-top">
+        <span class="kanban-card-company">${escapeHtml(app.company)}</span>
+        <span class="timeline-pill">${app.app_id}</span>
       </div>
-    `).join('')}
+      <div class="kanban-card-role">${escapeHtml(app.role)}</div>
+      <div class="kanban-card-footer">
+        <span>${app.last_event_date}</span>
+        ${app.needs_followup ? `<span class="followup-indicator">🔔 ${app.days_silent}d silent</span>` : `<span>${app.emails.length} events</span>`}
+      </div>
+    </div>
   `;
 
-  modal.style.display = 'flex';
-};
+  colApplied.innerHTML = appliedList.map(renderCard).join('') || '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.5rem;">None</div>';
+  colInterview.innerHTML = interviewList.map(renderCard).join('') || '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.5rem;">None</div>';
+  colOffer.innerHTML = offerList.map(renderCard).join('') || '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.5rem;">None</div>';
+  colRejected.innerHTML = rejectedList.map(renderCard).join('') || '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.5rem;">None</div>';
+}
 
-window.openEmailModal = function(id) {
-  const item = state.items.find(i => i.id === id);
-  if (!item) return;
-
-  const modal = document.getElementById('email-modal');
-  const stagePill = document.getElementById('modal-stage-pill');
-  const scamBox = document.getElementById('modal-scam-box');
-  const followupBox = document.getElementById('modal-followup-box');
-
-  document.getElementById('modal-subject').innerText = item.subject;
-  document.getElementById('modal-from').innerText = item.from;
-  document.getElementById('modal-date').innerText = item.date;
-  document.getElementById('modal-body-content').innerText = item.body;
-
-  stagePill.className = `modal-stage-pill stage-pill stage-${item.category}`;
-  stagePill.innerText = item.category.toUpperCase();
-
-  if (item.category === 'scam') {
-    scamBox.style.display = 'block';
-    const ul = document.getElementById('modal-scam-reasons');
-    ul.innerHTML = item.scam_analysis.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('');
-    document.getElementById('modal-btn-voice-warning').onclick = () => speakScamWarning(item);
-  } else {
-    scamBox.style.display = 'none';
-  }
-
-  if (item.followup.needs_followup) {
-    followupBox.style.display = 'block';
-    document.getElementById('modal-days-silent').innerText = item.followup.days_silent;
-    document.getElementById('modal-followup-draft').innerText = item.followup.followup_draft;
-    document.getElementById('modal-btn-copy-draft').onclick = () => copyEmailFollowupDraft(item.id);
-  } else {
-    followupBox.style.display = 'none';
-  }
-
-  modal.style.display = 'flex';
-};
-
-window.speakScamWarningById = function(id) {
-  const item = state.scams.find(s => s.id === id);
-  if (item) speakScamWarning(item);
-};
-
-window.speakScamWarning = function(item) {
-  if (!('speechSynthesis' in window)) {
-    showToast("Speech synthesis not supported in this browser.");
+// 3. Scam Studio Renderer
+function renderScamStudio() {
+  const container = document.getElementById('scam-cards-list');
+  if (state.scams.length === 0) {
+    container.innerHTML = '<div style="padding: 1rem; color: var(--text-muted);">No scam offers detected.</div>';
     return;
   }
-  window.speechSynthesis.cancel();
 
-  const mainReason = item.scam_analysis.reasons[0] || "Suspicious fraudulent offer detected.";
-  const textToSpeak = `Security Warning! An incoming email claiming to be from ${item.from} shows high risk signals. Warning evidence: ${mainReason}. Legitimate companies never charge candidates. Do not send training fees or confidential identity documents.`;
+  container.innerHTML = state.scams.map(item => `
+    <div class="scam-studio-card" onclick="openEmailDrawer(${item.id})">
+      <div>
+        <div class="scam-card-meta">
+          <span class="scam-card-id">EMAIL #${item.id}</span>
+          <span class="scam-card-sender">${escapeHtml(item.from)}</span>
+        </div>
+        <div class="scam-card-subject">${escapeHtml(item.subject)}</div>
+        <ul class="evidence-bullet-list">
+          ${item.scam_analysis.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('')}
+        </ul>
+      </div>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+        <button class="btn btn-xs btn-secondary" onclick="event.stopPropagation(); openEmailDrawer(${item.id})">
+          Inspect Evidence
+        </button>
+        <button class="btn btn-xs btn-voice" onclick="event.stopPropagation(); speakScamWarningById(${item.id})">
+          🔊 Spoken Warning
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
 
-  const utterance = new SpeechSynthesisUtterance(textToSpeak);
-  utterance.rate = 1.0;
-  utterance.lang = 'en-IN';
-  window.speechSynthesis.speak(utterance);
-  showToast("🔊 Playing Gemini Spoken Scam Warning...", "normal");
-};
+// 4. Follow-Up Copilot Renderer
+function renderFollowupCopilot() {
+  const container = document.getElementById('followup-cards-list');
+  const overdueApps = state.applications.filter(a => a.needs_followup);
 
-window.copyAppFollowupDraft = function(appId) {
-  const app = state.applications.find(a => a.app_id === appId);
-  if (!app || !app.followup_draft) return;
-  navigator.clipboard.writeText(app.followup_draft).then(() => {
-    showToast(`✓ Outreach draft for ${app.company} copied to clipboard!`, 'success');
-  });
-};
+  if (overdueApps.length === 0) {
+    container.innerHTML = '<div style="padding: 1rem; color: var(--text-muted);">No applications currently overdue for follow-up!</div>';
+    return;
+  }
 
-window.copyEmailFollowupDraft = function(id) {
-  const item = state.items.find(i => i.id === id);
-  if (!item || !item.followup.followup_draft) return;
-  navigator.clipboard.writeText(item.followup.followup_draft).then(() => {
-    showToast(`✓ Outreach draft for ${item.followup.company} copied!`, 'success');
-  });
-};
+  container.innerHTML = overdueApps.map(app => `
+    <div class="followup-copilot-card">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <span class="followup-card-company">${escapeHtml(app.company)}</span>
+          <span class="days-silent-meter">🔔 ${app.days_silent} Days Silent</span>
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          Role: <strong>${escapeHtml(app.role)}</strong> (${app.app_id})
+        </div>
+        <div class="draft-box">${escapeHtml(app.followup_draft)}</div>
+      </div>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+        <button class="btn btn-xs btn-primary" onclick="copyAppFollowupDraft('${app.app_id}')">
+          📋 Copy Outreach Draft
+        </button>
+        <button class="btn btn-xs btn-secondary" onclick="openAppDrawer('${app.app_id}')">
+          View Timeline
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
 
-function showToast(message, type = 'normal') {
-  const container = document.getElementById('toast-container');
-  const toast = document.createElement('div');
-  toast.className = `toast ${type === 'success' ? 'toast-success' : ''}`;
-  toast.innerText = message;
-  container.appendChild(toast);
-  setTimeout(() => toast.remove(), 3500);
+// Helper: Stage Badges
+function getStageBadge(category) {
+  const map = {
+    applied: '<span class="stage-pill stage-applied">⏳ Applied</span>',
+    interview: '<span class="stage-pill stage-interview">📅 Interview</span>',
+    offer: '<span class="stage-pill stage-offer">🎉 Genuine Offer</span>',
+    rejected: '<span class="stage-pill stage-rejected">❌ Rejected</span>',
+    scam: '<span class="stage-pill stage-scam">🚨 Fake Offer</span>'
+  };
+  return map[category] || `<span class="stage-pill">${category}</span>`;
 }
 
 function escapeHtml(str) {
   if (!str) return '';
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 // ==========================================
-// Event Listeners Initialization
+// Slide-Over Detail Drawer Logic
+// ==========================================
+
+function openAppDrawer(appId) {
+  const app = state.applications.find(a => a.app_id === appId);
+  if (!app) return;
+
+  const drawer = document.getElementById('detail-drawer');
+  document.getElementById('drawer-title').innerText = `${app.company}`;
+  document.getElementById('drawer-sub').innerText = `${app.role} (${app.app_id})`;
+  document.getElementById('drawer-meta-range').innerText = `${app.created_date} to ${app.last_event_date}`;
+  document.getElementById('drawer-meta-events').innerText = `${app.emails.length} communications`;
+
+  const stagePill = document.getElementById('drawer-stage-pill');
+  stagePill.className = `stage-pill stage-${app.current_stage}`;
+  stagePill.innerText = app.current_stage.toUpperCase();
+
+  document.getElementById('drawer-scam-box').style.display = 'none';
+
+  const followupBox = document.getElementById('drawer-followup-box');
+  if (app.needs_followup) {
+    followupBox.style.display = 'block';
+    document.getElementById('drawer-days-silent').innerText = app.days_silent;
+    document.getElementById('drawer-followup-draft').innerText = app.followup_draft;
+    document.getElementById('drawer-btn-copy-draft').onclick = () => copyAppFollowupDraft(app.app_id);
+  } else {
+    followupBox.style.display = 'none';
+  }
+
+  const timelineContent = document.getElementById('drawer-timeline-content');
+  timelineContent.innerHTML = app.emails.map(email => `
+    <div class="timeline-node">
+      <div class="timeline-node-header">
+        <span style="font-weight: 700; color: var(--text-primary);">${escapeHtml(email.date)}</span>
+        <span class="stage-pill stage-${email.category}" style="font-size: 0.68rem;">${email.category.toUpperCase()}</span>
+      </div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">
+        ${escapeHtml(email.subject)}
+      </div>
+      <div class="timeline-node-body">
+        ${escapeHtml(email.body)}
+      </div>
+    </div>
+  `).join('');
+
+  drawer.classList.add('open');
+}
+
+function openEmailDrawer(emailId) {
+  const item = state.items.find(i => i.id === emailId);
+  if (!item) return;
+
+  const drawer = document.getElementById('detail-drawer');
+  document.getElementById('drawer-title').innerText = item.subject;
+  document.getElementById('drawer-sub').innerText = `From: ${item.from}`;
+  document.getElementById('drawer-meta-range').innerText = item.date;
+  document.getElementById('drawer-meta-events').innerText = `Email #${item.id}`;
+
+  const stagePill = document.getElementById('drawer-stage-pill');
+  stagePill.className = `stage-pill stage-${item.category}`;
+  stagePill.innerText = item.category.toUpperCase();
+
+  const scamBox = document.getElementById('drawer-scam-box');
+  if (item.scam_analysis.is_scam) {
+    scamBox.style.display = 'block';
+    const ul = document.getElementById('drawer-scam-reasons');
+    ul.innerHTML = item.scam_analysis.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('');
+    document.getElementById('drawer-btn-voice-warning').onclick = () => speakScamWarning(item);
+  } else {
+    scamBox.style.display = 'none';
+  }
+
+  document.getElementById('drawer-followup-box').style.display = 'none';
+
+  const timelineContent = document.getElementById('drawer-timeline-content');
+  timelineContent.innerHTML = `
+    <div class="timeline-node">
+      <div class="timeline-node-header">
+        <span style="font-weight: 700; color: var(--text-primary);">${item.date}</span>
+      </div>
+      <div class="timeline-node-body" style="font-size: 0.8rem; line-height: 1.5; white-space: pre-wrap;">
+        ${escapeHtml(item.body)}
+      </div>
+    </div>
+  `;
+
+  drawer.classList.add('open');
+}
+
+function closeDrawer() {
+  const drawer = document.getElementById('detail-drawer');
+  if (drawer) drawer.classList.remove('open');
+}
+
+// Voice warning synthesis
+function speakScamWarning(item) {
+  if (!('speechSynthesis' in window)) {
+    alert("Speech synthesis is not supported on this browser.");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const warningText = `Security warning. The email regarding ${item.subject} has been quarantined as a fraudulent offer. Reasons include: ${item.scam_analysis.reasons.join(". ")}. Do not pay any training fees or submit identity cards.`;
+  const utterance = new SpeechSynthesisUtterance(warningText);
+  utterance.rate = 1.0;
+  window.speechSynthesis.speak(utterance);
+  showToast("🔊 Playing Spoken Scam Warning...", "danger");
+}
+
+function speakScamWarningById(id) {
+  const item = state.scams.find(s => s.id === id);
+  if (item) speakScamWarning(item);
+}
+
+// Copy Follow-Up drafts
+function copyAppFollowupDraft(appId) {
+  const app = state.applications.find(a => a.app_id === appId);
+  if (app && app.followup_draft) {
+    navigator.clipboard.writeText(app.followup_draft).then(() => {
+      showToast(`✓ Outreach draft for ${app.company} copied to clipboard!`, "success");
+    });
+  }
+}
+
+// Toast notification
+function showToast(message, type = "normal") {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.innerText = message;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 250);
+  }, 2600);
+}
+
+// ==========================================
+// Initialization & Event Binding
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 0. Theme Switcher (Default Light Theme with Dark Mode option)
+  // Theme Toggle
   const themeBtn = document.getElementById('theme-toggle');
   if (themeBtn) {
     themeBtn.addEventListener('click', () => {
-      const isDark = document.body.classList.contains('dark-theme');
-      if (isDark) {
+      if (document.body.classList.contains('dark-theme')) {
         document.body.classList.remove('dark-theme');
         document.body.classList.add('light-theme');
-        themeBtn.innerText = '🌙 Dark Mode';
-        showToast('Switched to Clean Light Theme', 'normal');
+        themeBtn.innerText = '🌙 Dark';
+        showToast('Switched to Modern Light Theme');
       } else {
         document.body.classList.remove('light-theme');
         document.body.classList.add('dark-theme');
-        themeBtn.innerText = '☀️ Light Mode';
-        showToast('Switched to Dark Mode', 'normal');
+        themeBtn.innerText = '☀️ Light';
+        showToast('Switched to Dark Theme');
       }
     });
   }
 
-  // 1. View Mode Switcher (Applications vs Email Stream)
-  document.getElementById('btn-view-apps').addEventListener('click', () => {
-    state.viewMode = 'apps';
-    document.getElementById('btn-view-apps').classList.add('active');
-    document.getElementById('btn-view-emails').classList.remove('active');
-    renderMetrics();
+  // Sidebar Dock Navigation
+  document.querySelectorAll('.dock-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchView(btn.dataset.view);
+    });
+  });
+
+  // KPI Ribbon Clicks (Direct Quick Filter & Switch)
+  document.querySelectorAll('.kpi-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter || 'all';
+      if (filter === 'scam') {
+        switchView('scams');
+      } else if (filter === 'followup') {
+        switchView('followups');
+      } else {
+        switchView('apps');
+        state.activeFilter = filter;
+        document.querySelectorAll('.filter-pill').forEach(b => {
+          b.classList.toggle('active', b.dataset.filter === filter);
+        });
+        renderTable();
+      }
+    });
+  });
+
+  // Filter Pills inside toolbar
+  document.querySelectorAll('.filter-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.activeFilter = btn.dataset.filter;
+      if (state.activeFilter === 'scam') {
+        switchView('scams');
+      } else if (state.activeFilter === 'followup') {
+        switchView('followups');
+      } else {
+        if (state.activeView !== 'apps' && state.activeView !== 'raw') {
+          switchView('apps');
+        } else {
+          renderTable();
+        }
+      }
+    });
+  });
+
+  // Search Input
+  document.getElementById('search-input').addEventListener('input', (e) => {
+    state.searchQuery = e.target.value;
     renderTable();
   });
 
-  document.getElementById('btn-view-emails').addEventListener('click', () => {
-    state.viewMode = 'emails';
-    document.getElementById('btn-view-emails').classList.add('active');
-    document.getElementById('btn-view-apps').classList.remove('active');
-    renderMetrics();
-    renderTable();
+  // Model Selector
+  document.getElementById('model-selector').addEventListener('change', (e) => {
+    showToast(`Active Classifier: ${e.target.value}`);
   });
 
-  // 2. Load Sample Button (Gap D: Self-updating pipeline on re-import)
+  // Load Demo Inbox Button
   document.getElementById('btn-load-sample').addEventListener('click', () => {
     fetch('/api/sample')
       .then(res => res.json())
       .then(data => {
         if (data.items) {
           processEmailList(data.items);
-          showToast(`Ingested & updated tracker with ${data.items.length} emails!`, 'success');
+          showToast(`Ingested ${data.items.length} demo communications!`, 'success');
         } else {
           processEmailList(EMBEDDED_SAMPLE_DATA);
-          showToast(`Ingested & updated tracker with 20 demo emails!`, 'success');
+          showToast(`Ingested 20 demo communications!`, 'success');
         }
       })
       .catch(() => {
         processEmailList(EMBEDDED_SAMPLE_DATA);
-        showToast(`Ingested & updated tracker with 20 demo emails!`, 'success');
+        showToast(`Ingested 20 demo communications!`, 'success');
       });
   });
 
-  // 3. Filter Pills
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      state.activeFilter = btn.dataset.filter;
-      // sync metric cards active state
-      document.querySelectorAll('.metric-card').forEach(c => {
-        c.classList.toggle('active-filter', c.dataset.filter === btn.dataset.filter);
-      });
-      renderTable();
-    });
-  });
-
-  // 3b. Interactive Metric Cards (Click to filter table)
-  document.querySelectorAll('.metric-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const filter = card.dataset.filter || 'all';
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.filter === filter);
-      });
-      document.querySelectorAll('.metric-card').forEach(c => c.classList.remove('active-filter'));
-      card.classList.add('active-filter');
-      state.activeFilter = filter;
-      renderTable();
-      showToast(`Showing: ${filter.toUpperCase()}`, 'normal');
-    });
-  });
-
-  // 3c. Collapsible Section Toggles
-  const btnToggleScams = document.getElementById('btn-toggle-scams');
-  if (btnToggleScams) {
-    btnToggleScams.addEventListener('click', () => {
-      const list = document.getElementById('scam-cards-list');
-      if (list.style.display === 'none') {
-        list.style.display = 'grid';
-        btnToggleScams.innerText = 'Hide Details';
-      } else {
-        list.style.display = 'none';
-        btnToggleScams.innerText = 'Show Details';
-      }
-    });
-  }
-
-  const btnToggleFollowups = document.getElementById('btn-toggle-followups');
-  if (btnToggleFollowups) {
-    btnToggleFollowups.addEventListener('click', () => {
-      const list = document.getElementById('followup-cards-list');
-      if (list.style.display === 'none') {
-        list.style.display = 'grid';
-        btnToggleFollowups.innerText = 'Hide Details';
-      } else {
-        list.style.display = 'none';
-        btnToggleFollowups.innerText = 'Show Details';
-      }
-    });
-  }
-
-  // 4. Search Box
-  document.getElementById('search-input').addEventListener('input', (e) => {
-    state.searchQuery = e.target.value;
-    renderTable();
-  });
-
-  // 5. Configurable Model Selector
-  document.getElementById('model-selector').addEventListener('change', (e) => {
-    showToast(`Active Classifier Model set to: ${e.target.value}`, 'normal');
-  });
-
-  // 6. File Upload
+  // File Upload
   document.getElementById('file-upload').addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = function(evt) {
-      const content = evt.target.result;
-      if (file.name.endsWith('.json')) {
-        try {
-          const parsed = JSON.parse(content);
-          processEmailList(parsed);
-          showToast(`Classified & grouped ${parsed.length} emails into applications!`, 'success');
-        } catch (err) {
-          alert("Invalid JSON file: " + err.message);
-        }
+      try {
+        const parsed = JSON.parse(evt.target.result);
+        processEmailList(parsed);
+        showToast(`Ingested ${parsed.length} communications from ${file.name}!`, 'success');
+      } catch (err) {
+        alert("Invalid file: " + err.message);
       }
     };
     reader.readAsText(file);
   });
 
-  // 7. Export Tracker
+  // Export JSON
   document.getElementById('btn-export-json').addEventListener('click', () => {
     const exportPayload = {
       summary: state.summary,
@@ -939,19 +976,14 @@ document.addEventListener('DOMContentLoaded', () => {
     dl.setAttribute("href", dataStr);
     dl.setAttribute("download", `job_hunt_tracker_${new Date().toISOString().slice(0,10)}.json`);
     dl.click();
-    showToast("✓ Application Tracker exported to JSON!", "success");
+    showToast("✓ Tracker Exported to JSON!", "success");
   });
 
-  // 8. Modal close handlers
-  document.getElementById('btn-close-modal').addEventListener('click', () => {
-    document.getElementById('email-modal').style.display = 'none';
-  });
-  document.getElementById('btn-modal-close-footer').addEventListener('click', () => {
-    document.getElementById('email-modal').style.display = 'none';
-  });
-  window.addEventListener('click', (e) => {
-    const modal = document.getElementById('email-modal');
-    if (e.target === modal) modal.style.display = 'none';
+  // Drawer Close Handlers
+  document.getElementById('btn-close-drawer').addEventListener('click', closeDrawer);
+  document.getElementById('btn-drawer-dismiss').addEventListener('click', closeDrawer);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
   });
 
   // Initial self-update on load
