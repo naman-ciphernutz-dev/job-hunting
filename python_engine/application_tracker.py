@@ -46,25 +46,39 @@ def extract_role_title(subject: str, body: str) -> str:
 
 def group_emails_into_applications(classified_emails: List[Dict[str, Any]], ref_date: Optional[date] = None) -> Dict[str, Any]:
     """
-    Group classified emails by Company + Role into unified Application Records.
-    Maintains full chronological communication timeline.
+    Group classified emails by Company into unified Application Records.
+    Maintains full chronological communication timeline, handles out-of-order emails,
+    and deduplicates re-imported emails.
     """
     if ref_date is None:
         ref_date = DEFAULT_REFERENCE_DATE
 
-    # Separate scam attempts from legitimate corporate applications
     scam_records = []
+    seen_scam_ids = set()
     app_buckets: Dict[str, Dict[str, Any]] = {}
+    seen_app_email_keys = set()
 
     for email in classified_emails:
+        email_id = email.get("id")
+        
+        # 1. Quarantine Scams (part of single pipeline, filtered view)
         if email.get("category") == "scam":
-            scam_records.append(email)
+            if email_id not in seen_scam_ids:
+                seen_scam_ids.add(email_id)
+                scam_records.append(email)
             continue
 
+        # 2. Legitimate Applications grouping
         company_raw = email["followup"].get("company", "")
         company = normalize_company_name(company_raw, email.get("from", ""))
         role = extract_role_title(email.get("subject", ""), email.get("body", ""))
         app_key = company.lower()
+
+        # Deduplication check: prevent duplicate emails within application
+        email_unique_key = f"{app_key}:{email_id}:{email.get('date')}:{email.get('subject')}"
+        if email_unique_key in seen_app_email_keys:
+            continue
+        seen_app_email_keys.add(email_unique_key)
 
         if app_key not in app_buckets:
             app_buckets[app_key] = {
@@ -87,24 +101,32 @@ def group_emails_into_applications(classified_emails: List[Dict[str, Any]], ref_
 
     # Sort each application's emails chronologically and determine current lifecycle stage
     applications_list = []
-    stage_priority = {"applied": 1, "interview": 2, "rejected": 3, "offer": 4}
 
     for app_key, app in app_buckets.items():
-        # Sort emails by date
+        # Sort emails chronologically by date
         app["emails"].sort(key=lambda x: parse_date_safely(x.get("date")))
         
-        # Timeline dates
+        # Timeline bounds
         first_date = parse_date_safely(app["emails"][0].get("date"))
         last_date = parse_date_safely(app["emails"][-1].get("date"))
         app["created_date"] = first_date.strftime("%Y-%m-%d")
         app["last_event_date"] = last_date.strftime("%Y-%m-%d")
 
-        # Determine current stage based on latest chronological email event
+        # Determine current stage based on chronological progression
+        # Terminal state protection: if an application is formally rejected, an older acknowledgment email cannot revert it
+        stages_in_thread = [e.get("category", "applied") for e in app["emails"]]
         latest_email = app["emails"][-1]
-        app["current_stage"] = latest_email.get("category", "applied")
+        
+        if "offer" in stages_in_thread:
+            app["current_stage"] = "offer"
+        elif "rejected" in stages_in_thread:
+            app["current_stage"] = "rejected"
+        else:
+            app["current_stage"] = latest_email.get("category", "applied")
 
         # Deterministic 7-day follow-up calculation:
-        # Based on days since the LAST meaningful employer event for active applications (applied or interview)
+        # Strictly applies ONLY to active stages (applied or interview).
+        # Overdue if days since the LAST employer email >= 7
         days_silent = max(0, (ref_date - last_date).days)
         app["days_silent"] = days_silent
 
