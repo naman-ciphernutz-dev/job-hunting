@@ -18,7 +18,7 @@ from .classifier import classify_email as rule_based_classify
 from .followup import DEFAULT_REFERENCE_DATE
 
 DEFAULT_API_KEY = os.environ.get("GEMINI_API_KEY", "AQ.Ab8RN6LaVDwfHZmL1kIKbc4LbGteGqzhh6UUZX9t_o2RWrI9LA")
-DEFAULT_MODEL = os.environ.get("GEMINI_MODEL", "gemma-4-26b-a4b-it")
+DEFAULT_MODEL = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
 
 
 def classify_with_gemini(email_item: Dict[str, Any], api_key: Optional[str] = None, model: Optional[str] = None, ref_date: Optional[date] = None) -> Dict[str, Any]:
