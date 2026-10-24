@@ -4,6 +4,7 @@ Serves static dashboard and provides REST API endpoints:
 - GET / : Web Dashboard
 - GET /api/sample : Returns the 20-email sample inbox
 - POST /api/classify : Accepts JSON array of emails, returns full classified tracker
+- POST /api/gemini/classify : Live Gemini cloud model classification
 """
 
 import http.server
@@ -54,12 +55,24 @@ class AutopilotHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         parsed = urlparse(self.path)
-        if parsed.path == "/api/classify":
+        if parsed.path in ["/api/classify", "/api/gemini/classify"]:
             content_length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(content_length).decode("utf-8")
             try:
                 emails = json.loads(body)
-                result = process_inbox(emails, DEFAULT_REFERENCE_DATE)
+                if parsed.path == "/api/gemini/classify":
+                    from python_engine.gemini_classifier import classify_with_gemini
+                    from python_engine.application_tracker import group_emails_into_applications
+                    classified = [classify_with_gemini(e, ref_date=DEFAULT_REFERENCE_DATE) for e in emails]
+                    app_data = group_emails_into_applications(classified, DEFAULT_REFERENCE_DATE)
+                    result = {
+                        "items": classified,
+                        "application_tracker": app_data,
+                        "powered_by": "Google AI Live Models"
+                    }
+                else:
+                    result = process_inbox(emails, DEFAULT_REFERENCE_DATE)
+
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.send_header("Access-Control-Allow-Origin", "*")
@@ -68,6 +81,7 @@ class AutopilotHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_response(400)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
             return
@@ -84,7 +98,6 @@ class AutopilotHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def start_server(port=PORT):
-    # Allow port reuse
     socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", port), AutopilotHandler) as httpd:
         print(f"\n=======================================================")
