@@ -557,15 +557,15 @@ function renderTable() {
 
       // Build timeline pills
       const timelinePills = app.emails.map(e => `
-        <span style="font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); margin-right: 4px;" title="${e.date}: ${escapeHtml(e.subject)}">
+        <span class="timeline-pill" title="${e.date}: ${escapeHtml(e.subject)}">
           ${e.category.toUpperCase().slice(0,3)} (${e.date.slice(5)})
         </span>
       `).join('→ ');
 
       return `
         <tr class="${rowClass}">
-          <td><strong style="color: var(--accent-primary);">${app.app_id}</strong></td>
-          <td><strong style="font-size: 0.95rem; color: #fff;">${escapeHtml(app.company)}</strong></td>
+          <td><strong style="color: var(--accent-primary); font-family: var(--font-mono);">${app.app_id}</strong></td>
+          <td><strong style="font-size: 0.95rem; color: var(--text-primary);">${escapeHtml(app.company)}</strong></td>
           <td>${stageBadge} ${followupTag}</td>
           <td style="color: var(--text-secondary);">${escapeHtml(app.role)}</td>
           <td>${timelinePills} <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 6px;">(${app.emails.length} email${app.emails.length > 1 ? 's' : ''})</span></td>
@@ -842,9 +842,57 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       state.activeFilter = btn.dataset.filter;
+      // sync metric cards active state
+      document.querySelectorAll('.metric-card').forEach(c => {
+        c.classList.toggle('active-filter', c.dataset.filter === btn.dataset.filter);
+      });
       renderTable();
     });
   });
+
+  // 3b. Interactive Metric Cards (Click to filter table)
+  document.querySelectorAll('.metric-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const filter = card.dataset.filter || 'all';
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === filter);
+      });
+      document.querySelectorAll('.metric-card').forEach(c => c.classList.remove('active-filter'));
+      card.classList.add('active-filter');
+      state.activeFilter = filter;
+      renderTable();
+      showToast(`Showing: ${filter.toUpperCase()}`, 'normal');
+    });
+  });
+
+  // 3c. Collapsible Section Toggles
+  const btnToggleScams = document.getElementById('btn-toggle-scams');
+  if (btnToggleScams) {
+    btnToggleScams.addEventListener('click', () => {
+      const list = document.getElementById('scam-cards-list');
+      if (list.style.display === 'none') {
+        list.style.display = 'grid';
+        btnToggleScams.innerText = 'Hide Details';
+      } else {
+        list.style.display = 'none';
+        btnToggleScams.innerText = 'Show Details';
+      }
+    });
+  }
+
+  const btnToggleFollowups = document.getElementById('btn-toggle-followups');
+  if (btnToggleFollowups) {
+    btnToggleFollowups.addEventListener('click', () => {
+      const list = document.getElementById('followup-cards-list');
+      if (list.style.display === 'none') {
+        list.style.display = 'grid';
+        btnToggleFollowups.innerText = 'Hide Details';
+      } else {
+        list.style.display = 'none';
+        btnToggleFollowups.innerText = 'Show Details';
+      }
+    });
+  }
 
   // 4. Search Box
   document.getElementById('search-input').addEventListener('input', (e) => {

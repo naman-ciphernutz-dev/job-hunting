@@ -16,169 +16,170 @@
     <div class="header-container">
       <div class="brand-group">
         <div class="brand-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
             <circle cx="12" cy="12" r="10" stroke-width="1.5" stroke-dasharray="3 3"/>
           </svg>
         </div>
         <div>
-          <h1 class="brand-title">Job Hunt Autopilot</h1>
+          <div class="brand-title-row">
+            <h1 class="brand-title">Job Hunt Autopilot</h1>
+            <span class="badge badge-gdg">GDG Hackathon</span>
+          </div>
           <p class="brand-subtitle">Track every application. Catch every fake offer.</p>
         </div>
       </div>
       
-      <div class="header-badges">
-        <button id="theme-toggle" class="btn btn-sm btn-secondary" title="Switch Theme">
+      <div class="header-actions">
+        <button id="btn-load-sample" class="btn btn-primary" title="Load sample 20 emails">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span>Load 20 Demo Emails</span>
+        </button>
+
+        <label for="file-upload" class="btn btn-secondary" title="Upload inbox JSON or .mbox file">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 16l4-4 4 4"/></svg>
+          <span>Upload File</span>
+        </label>
+        <input type="file" id="file-upload" accept=".json,.mbox" style="display: none;">
+
+        <button id="btn-export-json" class="btn btn-ghost" title="Export Tracker Data">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          <span>Export</span>
+        </button>
+
+        <button id="theme-toggle" class="btn btn-icon" title="Switch Theme">
           🌙 Dark Mode
         </button>
-        <span class="badge badge-layoff" id="layoff-badge">
-          <span class="status-dot"></span> Layoff Recovery Mode (100+ Applications)
-        </span>
-        <span class="badge badge-gdg">GDG Hackathon 2026</span>
       </div>
     </div>
   </header>
 
   <!-- Main Content Layout -->
   <main class="main-container">
-    <!-- Story Hero Narrative Banner -->
-    <section class="story-banner" id="story-banner">
-      <div class="story-content">
-        <div class="story-tag">THE PROBLEM WE ARE SOLVING</div>
-        <h2>After a sudden layoff, job seekers apply to 100+ roles at once.</h2>
-        <p>
-          Managing responses becomes chaotic—replies get missed, rejections slip by, and follow-ups are neglected.
-          Crucially, vulnerable job seekers are prime targets for <strong>fake offers demanding "training fees" or PAN/Aadhaar scans</strong>.
-          Job Hunt Autopilot processes your entire inbox in one pipeline to bring total clarity and fraud immunity.
-        </p>
+    <!-- Streamlined Layoff Narrative Notice -->
+    <div class="compact-notice">
+      <div class="notice-left">
+        <span class="status-dot"></span>
+        <strong>Layoff Recovery Assistant:</strong>
+        <span>Unified inbox triage for 100+ applications. Aggregates multi-round communications, quarantines advance-fee scams, and flags 7-day silent follow-ups.</span>
       </div>
-      <div class="story-actions">
-        <button id="btn-load-sample" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Load 20-Email Demo Inbox
-        </button>
-        <label for="file-upload" class="btn btn-secondary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 16l4-4 4 4"/></svg>
-          Upload JSON / .mbox
-        </label>
-        <input type="file" id="file-upload" accept=".json,.mbox" style="display: none;">
-        <button id="btn-export-json" class="btn btn-outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-          Export Tracker
-        </button>
+      <div class="notice-meta" id="anchor-date-display">
+        Anchor: 2026-10-24
       </div>
-    </section>
+    </div>
 
-    <!-- Metrics Cards Grid -->
+    <!-- Interactive KPI Metrics Bar (Click to Filter) -->
     <section class="metrics-grid" id="metrics-grid">
-      <div class="metric-card" id="metric-total">
+      <div class="metric-card" id="metric-total" data-filter="all" title="Click to view all applications">
         <div class="metric-header">
-          <span class="metric-label">Total Processed</span>
-          <span class="metric-icon">📬</span>
+          <span class="metric-label">Total Applications</span>
+          <span class="metric-icon">🏢</span>
         </div>
         <div class="metric-value" id="val-total">0</div>
-        <div class="metric-meta">Processed in 1 unified pipeline</div>
+        <div class="metric-meta">Grouped by company & role</div>
       </div>
 
-      <div class="metric-card metric-applied" id="metric-applied">
+      <div class="metric-card metric-applied" id="metric-applied" data-filter="applied" title="Click to filter by Applied">
         <div class="metric-header">
-          <span class="metric-label">Applications Under Review</span>
+          <span class="metric-label">Under Review</span>
           <span class="metric-icon">⏳</span>
         </div>
         <div class="metric-value" id="val-applied">0</div>
-        <div class="metric-meta">Awaiting employer next steps</div>
+        <div class="metric-meta">Awaiting review</div>
       </div>
 
-      <div class="metric-card metric-interview" id="metric-interview">
+      <div class="metric-card metric-interview" id="metric-interview" data-filter="interview" title="Click to filter by Interviews">
         <div class="metric-header">
-          <span class="metric-label">Interview Rounds</span>
+          <span class="metric-label">Interview Stages</span>
           <span class="metric-icon">📅</span>
         </div>
         <div class="metric-value" id="val-interview">0</div>
-        <div class="metric-meta">Active technical screening & pair calls</div>
+        <div class="metric-meta">Active rounds</div>
       </div>
 
-      <div class="metric-card metric-offer" id="metric-offer">
+      <div class="metric-card metric-offer" id="metric-offer" data-filter="offer" title="Click to filter by Genuine Offers">
         <div class="metric-header">
-          <span class="metric-label">Verified Genuine Offers</span>
+          <span class="metric-label">Verified Offers</span>
           <span class="metric-icon">🎉</span>
         </div>
         <div class="metric-value" id="val-offer">0</div>
-        <div class="metric-meta">Official corporate domain verified</div>
+        <div class="metric-meta">Genuine company domains</div>
       </div>
 
-      <div class="metric-card metric-scam" id="metric-scam">
+      <div class="metric-card metric-scam" id="metric-scam" data-filter="scam" title="Click to inspect quarantined fake offers">
         <div class="metric-header">
           <span class="metric-label">Fake Offers Flagged</span>
           <span class="metric-icon pulse-red">🚨</span>
         </div>
         <div class="metric-value" id="val-scam">0</div>
-        <div class="metric-meta text-red">High-risk fraud & phishing schemes</div>
+        <div class="metric-meta text-red">Quarantined fraud & fees</div>
       </div>
 
-      <div class="metric-card metric-followup" id="metric-followup">
+      <div class="metric-card metric-followup" id="metric-followup" data-filter="followup" title="Click to view 7-day follow-ups">
         <div class="metric-header">
-          <span class="metric-label">7-Day Follow-ups Due</span>
+          <span class="metric-label">Follow-ups Due</span>
           <span class="metric-icon">🔔</span>
         </div>
         <div class="metric-value" id="val-followup">0</div>
-        <div class="metric-meta text-yellow">≥ 7 days silence (drafts ready)</div>
+        <div class="metric-meta text-yellow">≥ 7 days silent (draft ready)</div>
       </div>
     </section>
 
-    <!-- RED ALERT: Fake Offer Forensic Warning Section -->
+    <!-- Collapsible Priority Scam Quarantine Box -->
     <section class="alert-section" id="scam-alerts-section" style="display: none;">
       <div class="alert-banner-header">
         <div class="alert-title-wrap">
-          <div class="alert-pulse-badge">CRITICAL FRAUD ALERT</div>
-          <h3>Fake Offers & Phishing Detected in Inbox</h3>
+          <div class="alert-pulse-badge">CRITICAL FRAUD QUARANTINE</div>
+          <div>
+            <h3>High-Risk Fake Offers Isolated</h3>
+            <p class="alert-sub">Detected upfront training fee demands, fake domains, or KYC phishing.</p>
+          </div>
         </div>
-        <span class="alert-count-pill" id="scam-count-pill">0 Fake Offers Blocked</span>
+        <div class="alert-header-actions">
+          <span class="alert-count-pill" id="scam-count-pill">0 Fake Offers Blocked</span>
+          <button class="btn btn-sm btn-outline-danger" id="btn-toggle-scams">Hide Details</button>
+        </div>
       </div>
-      <p class="alert-description">
-        Scammers actively prey on laid-off candidates by demanding upfront "training fees", "laptop courier deposits", or sensitive Aadhaar/PAN cards.
-        The emails below have been quarantined with exact forensic evidence:
-      </p>
       <div class="scam-cards-container" id="scam-cards-list">
         <!-- Injected via app.js -->
       </div>
     </section>
 
-    <!-- 7-Day Follow-up Action Section -->
+    <!-- Collapsible Follow-up Queue Section -->
     <section class="followup-section" id="followup-section" style="display: none;">
       <div class="followup-header">
         <div>
           <div class="section-tag">STAGNANCY DETECTOR</div>
-          <h3>Follow-Up Queue (7+ Days of Radio Silence)</h3>
-          <p class="section-sub">Don't lose momentum. These companies haven't replied in 7+ days. Click to copy custom follow-up outreach.</p>
+          <h3>Follow-Up Queue (≥7 Days of Silence)</h3>
+          <p class="section-sub">These employers haven't responded in a week. Click below to copy personalized outreach drafts.</p>
         </div>
-        <div class="anchor-date-badge" id="anchor-date-display">
-          Anchor Date: 2026-10-24
-        </div>
+        <button class="btn btn-sm btn-ghost" id="btn-toggle-followups">Hide Details</button>
       </div>
       <div class="followup-grid" id="followup-cards-list">
         <!-- Injected via app.js -->
       </div>
     </section>
 
-    <!-- Application Tracker Table & Filters -->
+    <!-- Main Application Tracker Section -->
     <section class="tracker-section" id="tracker-section">
+      <!-- Clean Single-Row Toolbar -->
       <div class="tracker-toolbar">
         <div class="toolbar-left-group">
-          <!-- View Switcher (Gap A: Application Tracker vs Email Stream) -->
+          <!-- View Switcher -->
           <div class="view-mode-toggle" id="view-mode-toggle">
             <button class="view-btn active" id="btn-view-apps" data-view="apps">
-              🏢 Applications View (<span id="cnt-apps-total">13</span>)
+              🏢 Applications (<span id="cnt-apps-total">13</span>)
             </button>
             <button class="view-btn" id="btn-view-emails" data-view="emails">
-              📨 Raw Email Stream (<span id="cnt-emails-total">20</span>)
+              📨 Raw Stream (<span id="cnt-emails-total">20</span>)
             </button>
           </div>
 
+          <!-- Filter Pills -->
           <div class="filter-pills" id="filter-pills">
             <button class="filter-btn active" data-filter="all" id="filter-all">All (<span id="cnt-all">13</span>)</button>
             <button class="filter-btn filter-scam-btn" data-filter="scam" id="filter-scam">🚨 Fake Offers (<span id="cnt-scam">4</span>)</button>
-            <button class="filter-btn filter-followup-btn" data-filter="followup" id="filter-followup">🔔 Overdue Follow-Up (<span id="cnt-followup">4</span>)</button>
+            <button class="filter-btn filter-followup-btn" data-filter="followup" id="filter-followup">🔔 Overdue (<span id="cnt-followup">4</span>)</button>
             <button class="filter-btn" data-filter="offer" id="filter-offer">🎉 Offers (<span id="cnt-offer">2</span>)</button>
             <button class="filter-btn" data-filter="interview" id="filter-interview">📅 Interviews (<span id="cnt-interview">3</span>)</button>
             <button class="filter-btn" data-filter="applied" id="filter-applied">⏳ Applied (<span id="cnt-applied">5</span>)</button>
@@ -187,13 +188,14 @@
         </div>
 
         <div class="toolbar-right-group">
-          <select id="model-selector" class="model-select" title="Configurable Gemini Model Selection">
-            <option value="gemini-2.5-flash" selected>Model: Gemini 2.5 Flash (Fast & Low Cost)</option>
-            <option value="gemini-4-argon">Model: Gemini 4 Argon (Frontier)</option>
-          </select>
           <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             <input type="text" id="search-input" placeholder="Search company, role...">
           </div>
+          <select id="model-selector" class="model-select" title="Gemini Model Engine">
+            <option value="gemini-flash-latest" selected>Gemini 2.5 Flash</option>
+            <option value="gemini-4-argon">Gemini 4 Argon</option>
+          </select>
         </div>
       </div>
 
@@ -202,12 +204,12 @@
         <table class="applications-table" id="applications-table">
           <thead>
             <tr>
-              <th style="width: 50px;">ID</th>
+              <th style="width: 50px;">#</th>
               <th style="width: 110px;">Date</th>
-              <th style="width: 170px;">Classification</th>
-              <th style="width: 220px;">Company / Sender</th>
-              <th>Subject & Overview</th>
-              <th style="width: 140px; text-align: center;">Action</th>
+              <th style="width: 160px;">Stage</th>
+              <th style="width: 220px;">Company / Role</th>
+              <th>Communication Overview</th>
+              <th style="width: 150px; text-align: center;">Actions</th>
             </tr>
           </thead>
           <tbody id="table-body">
@@ -215,8 +217,8 @@
               <td colspan="6" class="empty-state">
                 <div class="empty-wrap">
                   <div class="empty-icon">📂</div>
-                  <h4>No emails loaded yet</h4>
-                  <p>Click "Load 20-Email Demo Inbox" above or upload your JSON / .mbox file to begin.</p>
+                  <h4>No communications loaded</h4>
+                  <p>Click "Load 20 Demo Emails" above to populate the tracker.</p>
                 </div>
               </td>
             </tr>
@@ -226,7 +228,7 @@
     </section>
   </main>
 
-  <!-- Email Detail & Forensics Modal -->
+  <!-- Detailed Timeline & Forensics Modal -->
   <div class="modal-backdrop" id="email-modal" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-header">
@@ -234,26 +236,26 @@
           <span class="modal-stage-pill" id="modal-stage-pill">Applied</span>
           <h3 id="modal-subject">Subject Line</h3>
         </div>
-        <button class="btn-close" id="btn-close-modal">&times;</button>
+        <button class="btn-close" id="btn-close-modal" aria-label="Close">&times;</button>
       </div>
       <div class="modal-body">
         <div class="modal-meta-grid">
-          <div><strong>From:</strong> <span id="modal-from"></span></div>
-          <div><strong>Date:</strong> <span id="modal-date"></span></div>
+          <div><strong>Sender / Stage:</strong> <span id="modal-from"></span></div>
+          <div><strong>Activity Timeline:</strong> <span id="modal-date"></span></div>
         </div>
 
-        <!-- Scam warning inside modal if applicable -->
+        <!-- Scam warning inside modal -->
         <div class="modal-scam-box" id="modal-scam-box" style="display: none;">
           <div class="scam-box-title-row">
             <div class="scam-box-title">🚨 Forensic Reasons for Fake Offer Classification:</div>
             <button class="btn btn-sm btn-voice" id="modal-btn-voice-warning">
-              🔊 Gemini Spoken Scam Warning
+              🔊 Speak Scam Warning
             </button>
           </div>
           <ul id="modal-scam-reasons"></ul>
         </div>
 
-        <!-- Follow-up draft box if applicable -->
+        <!-- Follow-up draft box inside modal -->
         <div class="modal-followup-box" id="modal-followup-box" style="display: none;">
           <div class="followup-box-header">
             <span>🔔 Follow-up Reminder (<span id="modal-days-silent">0</span> days silent)</span>
@@ -263,7 +265,7 @@
         </div>
 
         <div class="modal-email-content">
-          <h4>Email Content:</h4>
+          <h4>Communication Records:</h4>
           <div class="email-body-box" id="modal-body-content"></div>
         </div>
       </div>
