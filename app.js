@@ -781,6 +781,25 @@ function escapeHtml(str) {
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Theme Switcher (Default Light Theme with Dark Mode option)
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.body.classList.contains('dark-theme');
+      if (isDark) {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+        themeBtn.innerText = '🌙 Dark Mode';
+        showToast('Switched to Clean Light Theme', 'normal');
+      } else {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+        themeBtn.innerText = '☀️ Light Mode';
+        showToast('Switched to Dark Mode', 'normal');
+      }
+    });
+  }
+
   // 1. View Mode Switcher (Applications vs Email Stream)
   document.getElementById('btn-view-apps').addEventListener('click', () => {
     state.viewMode = 'apps';
