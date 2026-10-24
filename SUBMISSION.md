@@ -37,7 +37,10 @@ Job Hunt Autopilot provides a single unified intelligence pipeline that takes a 
 
 ---
 
-### 6. Verification & Test Coverage
-- Ingestion supports both JSON and `.mbox` mailbox formats without external credentials.
-- 7 comprehensive automated unit tests covering stage classification, scam detection precision, and follow-up generation.
-- Zero-dependency local server and modern glassmorphism web dashboard.
+### 6. Live Deployment & Verification
+- **Live Production URL:** [https://garba-hack.web.app](https://garba-hack.web.app) (Hosted on Google Firebase)
+- **Local Dashboard:** `http://localhost:8080` (zero-dependency Python server)
+- **Ingestion formats:** JSON and `.mbox` mailbox formats without external credentials.
+- **Test Suite:** 14 automated tests covering application grouping, scam detection precision, monotonic stages, and follow-up generation (`py -m unittest discover -s tests`).
+- **UI:** Modern clean light theme with dark mode switcher, interactive timeline modals, and 1-click outreach draft copy.
+
